@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="9" passed="9">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="403" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="403" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+      <class name="testNg.NewTest">
+        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:testNg.NewTest@335eadca]" name="beforeSuite" is-config="true" duration-ms="15966" started-at="2021-05-05T03:23:24Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeSuite -->
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:testNg.NewTest@335eadca]" name="beforeTest" is-config="true" duration-ms="1" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:testNg.NewTest@335eadca]" name="beforeClass" is-config="true" duration-ms="0" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClass -->
+        <test-method status="PASS" signature="Test2()[pri:-4, instance:testNg.NewTest@335eadca]" name="Test2" duration-ms="17" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Test2 -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testNg.NewTest@335eadca]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:testNg.NewTest@335eadca]" name="afterMethod" is-config="true" duration-ms="0" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testNg.NewTest@335eadca]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="Test1()[pri:-2, instance:testNg.NewTest@335eadca]" name="Test1" duration-ms="3" started-at="2021-05-05T03:23:40Z" depends-on-methods="testNg.NewTest.Test2" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Test1 -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:testNg.NewTest@335eadca]" name="afterMethod" is-config="true" duration-ms="0" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testNg.NewTest@335eadca]" name="beforeMethod" is-config="true" duration-ms="36" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="Test4()[pri:0, instance:testNg.NewTest@335eadca]" name="Test4" duration-ms="17" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Test4 -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:testNg.NewTest@335eadca]" name="afterMethod" is-config="true" duration-ms="1" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testNg.NewTest@335eadca]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="Test4()[pri:0, instance:testNg.NewTest@335eadca]" name="Test4" duration-ms="19" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Test4 -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:testNg.NewTest@335eadca]" name="afterMethod" is-config="true" duration-ms="2" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testNg.NewTest@335eadca]" name="beforeMethod" is-config="true" duration-ms="11" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="Test4()[pri:0, instance:testNg.NewTest@335eadca]" name="Test4" duration-ms="21" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Test4 -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:testNg.NewTest@335eadca]" name="afterMethod" is-config="true" duration-ms="1" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testNg.NewTest@335eadca]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="Test4()[pri:0, instance:testNg.NewTest@335eadca]" name="Test4" duration-ms="15" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Test4 -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:testNg.NewTest@335eadca]" name="afterMethod" is-config="true" duration-ms="0" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testNg.NewTest@335eadca]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="Test4()[pri:0, instance:testNg.NewTest@335eadca]" name="Test4" duration-ms="12" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Test4 -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:testNg.NewTest@335eadca]" name="afterMethod" is-config="true" duration-ms="5" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testNg.NewTest@335eadca]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="Test4()[pri:0, instance:testNg.NewTest@335eadca]" name="Test4" duration-ms="6" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Test4 -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:testNg.NewTest@335eadca]" name="afterMethod" is-config="true" duration-ms="0" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testNg.NewTest@335eadca]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="Test3()[pri:4, instance:testNg.NewTest@335eadca]" name="Test3" duration-ms="4" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Test3 -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:testNg.NewTest@335eadca]" name="afterMethod" is-config="true" duration-ms="1" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:testNg.NewTest@335eadca]" name="afterClass" is-config="true" duration-ms="1" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClass -->
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:testNg.NewTest@335eadca]" name="afterTest" is-config="true" duration-ms="0" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:testNg.NewTest@335eadca]" name="afterSuite" is-config="true" duration-ms="0" started-at="2021-05-05T03:23:40Z" finished-at="2021-05-05T03:23:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+      </class> <!-- testNg.NewTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

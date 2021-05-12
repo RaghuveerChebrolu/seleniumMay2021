@@ -1,6 +1,7 @@
 package testNg;
 
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -15,20 +16,31 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.AfterSuite;
 
-public class NewTest {
-
-	@Test(priority=-2,dependsOnMethods={"Test2"})
-	public void Test1() {
+public class TestCases {
+	WebDriver driver= null;
+	@Test()
+	public void verifyGmoOnlineLoadedSuccusessfully() {
+		SoftAssert softAssert = new SoftAssert();
 		System.out.println("inside test1");
+		String ActualTitle=driver.findElement(By.xpath("//font[contains(text(),'GMO OnLine')]")).getText();
+		System.out.println("tile of gmo online "+ActualTitle);
+		String expectedTitle="GMO Onie";
+		softAssert.assertEquals(ActualTitle, expectedTitle);
+		Boolean AcutaEnterGmoOnlineflag=driver.findElement(By.xpath("//input[@name='bSubmit']")).isEnabled();
+		Boolean ExpectedEnterGmoOnlineflag=true;
+		System.out.println(AcutaEnterGmoOnlineflag);
+		Assert.assertEquals(AcutaEnterGmoOnlineflag, ExpectedEnterGmoOnlineflag);
+		softAssert.assertAll();
 	}
 
-	//@Test(priority=-4,enabled=false)
+	/*//@Test(priority=-4,enabled=false)
 	@Test(priority=-4)
 	public void Test2() {
 		System.out.println("inside test2");
@@ -43,7 +55,7 @@ public class NewTest {
 	@Test(priority=0,invocationCount=6)
 	public void Test4() {
 		System.out.println("inside test4");
-	}
+	}*/
 
 	@BeforeMethod
 	public void beforeMethod() {
@@ -78,7 +90,7 @@ public class NewTest {
 	@BeforeSuite
 	public void beforeSuite() {
 		System.out.println("inside beforeSuite");
-		WebDriver driver= null;
+		
 		WebDriverManager.chromedriver().setup();
 		driver=new ChromeDriver();
 		driver.manage().window().maximize();//it maximizes our browser
@@ -86,7 +98,7 @@ public class NewTest {
 		//is declared below the this statement
 		
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.get("http://phptravels.net/login");
+		driver.get("https://demo.borland.com/gmopost/");
 		
 	//	driver.findElement(By.name("username")).sendKeys("user@phptravels.com");
 	//	driver.findElement(By.tagName("input")).sendKeys("user@phptravels.com");

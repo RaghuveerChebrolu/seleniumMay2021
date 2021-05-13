@@ -31,7 +31,7 @@ public class TestCases {
 		System.out.println("inside test1");
 		String ActualTitle=driver.findElement(By.xpath("//font[contains(text(),'GMO OnLine')]")).getText();
 		System.out.println("tile of gmo online "+ActualTitle);
-		String expectedTitle="GMO Onie";
+		String expectedTitle="GMO Online";
 		softAssert.assertEquals(ActualTitle, expectedTitle);
 		Boolean AcutaEnterGmoOnlineflag=driver.findElement(By.xpath("//input[@name='bSubmit']")).isEnabled();
 		Boolean ExpectedEnterGmoOnlineflag=true;

@@ -1,4 +1,4 @@
-package com.Java.Programs;
+package com.Java.Basics;
 
 public class stringsBasics {
 	//check edit form git hub

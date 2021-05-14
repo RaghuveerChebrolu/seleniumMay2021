@@ -31,7 +31,7 @@ public class TestCases {
 		System.out.println("inside test1");
 		String ActualTitle=driver.findElement(By.xpath("//font[contains(text(),'GMO OnLine')]")).getText();
 		System.out.println("tile of gmo online "+ActualTitle);
-		String expectedTitle="GMO Online";
+		String expectedTitle="GMO OnLine";
 		softAssert.assertEquals(ActualTitle, expectedTitle);
 		Boolean AcutaEnterGmoOnlineflag=driver.findElement(By.xpath("//input[@name='bSubmit']")).isEnabled();
 		Boolean ExpectedEnterGmoOnlineflag=true;
@@ -40,6 +40,21 @@ public class TestCases {
 		softAssert.assertAll();
 	}
 
+	@Test(dependsOnMethods={"verifyGmoOnlineLoadedSuccusessfully"})
+	public void verifyEnterGMOOnlineLoadedSuccessfully(){
+		driver.findElement(By.xpath("//input[@name='bSubmit']")).click();
+		String OnlineCatalogueheading=driver.findElement(By.xpath("//*[contains(text(),'currently')]")).getText();
+		System.out.println(OnlineCatalogueheading);
+		String Expected ="These are the items currently available through our online catalog. Select the quantity of each item and then press the \"Place An Order\" button at the bottom of the page.";
+		/*if(OnlineCatalogueheading.contains("Place An Order")){
+			
+		}else{
+			
+		}*/
+		System.out.println("Expected: "+Expected);
+		Assert.assertEquals(OnlineCatalogueheading, Expected);
+		
+	}
 	/*//@Test(priority=-4,enabled=false)
 	@Test(priority=-4)
 	public void Test2() {

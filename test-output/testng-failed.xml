@@ -13,6 +13,7 @@
           <include name="afterTest"/>
           <include name="afterClass"/>
           <include name="afterSuite"/>
+          <include name="verifyEnterGMOOnlineLoadedSuccessfully"/>
           <include name="beforeClass"/>
         </methods>
       </class> <!-- testNg.TestCases -->

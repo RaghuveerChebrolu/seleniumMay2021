@@ -1,22 +1,27 @@
 package com.Java.Programs;
 
-public class Palindrome {
+import java.util.Scanner;
+
+public class palindrome {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		//madam
-		String str="Javalearning";
-		//char [] arr=str.toCharArray();
-		System.out.println(str.length());
-		for (int i=0;i<str.length();i++){
-			System.out.println(str.charAt(i));
-			System.out.println(str.substring(4));
+		//2345432
+		String org,rev="";
+		Scanner in=new Scanner(System.in);
+		System.out.println("enter a string of your choice ");
+		org=in.nextLine();
+		int length=org.length();
+		System.out.println("length: "+ length);
+		for(int i=length-1;i>=0;i--){
+			rev=rev+org.charAt(i);
+			System.out.println("reverse string is : "+rev);
 		}
-		System.out.println("----------------------");
-		/*System.out.println(arr.length-1);
-		for (int j=arr.length-1;j>=0;j--){
-			System.out.println(arr[j]);
-		}*/
+		if(rev.equalsIgnoreCase(org)){
+			System.out.println("The given string is a palindrome");
+		}else {
+			System.out.println("The given string is not a palindrome");
+		}
 	}
 
 }

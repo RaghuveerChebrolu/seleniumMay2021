@@ -6,6 +6,7 @@
       <class name="testNg.TestCases">
         <methods>
           <include name="beforeTest"/>
+          <include name="verifyExternalFrameBackpackOrder"/>
           <include name="beforeSuite"/>
           <include name="verifyGmoOnlineLoadedSuccusessfully"/>
           <include name="beforeMethod"/>

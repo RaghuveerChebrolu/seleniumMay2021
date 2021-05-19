@@ -9,6 +9,7 @@
           <include name="verifyExternalFrameBackpackOrder"/>
           <include name="beforeSuite"/>
           <include name="verifyGmoOnlineLoadedSuccusessfully"/>
+          <include name="HandlingAlerts"/>
           <include name="beforeMethod"/>
           <include name="afterMethod"/>
           <include name="afterTest"/>

@@ -15,6 +15,7 @@ import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -126,6 +127,43 @@ public class TestCases {
 		};
 		WebDriverWait wait = new WebDriverWait(driver, 60);
 		wait.until(pageLoadCondition);
+	}
+	
+	@Test(priority=3,dependsOnMethods = { "verifyExternalFrameBackpackOrder" })
+		public void HandlingAlerts(){
+		driver.navigate().back();
+		System.out.println("Inside test case HandlingAlerts");
+		driver.findElement(By.xpath("//input[@name='QTY_BACKPACKS']")).clear();
+		driver.findElement(By.xpath("//input[@name='bSubmit']")).click();
+		Alert alert = driver.switchTo().alert();
+		String Alerttext=alert.getText();
+		System.out.println(Alerttext);
+		Assert.assertEquals(Alerttext, "Please Order Something First");
+		alert.accept();
+		driver.navigate().to("https://demoqa.com/alerts");
+		waitForPageToLoad(driver);
+		driver.findElement(By.id("confirmButton")).click();
+		Alert alert1 =driver.switchTo().alert();
+		alert1.dismiss();
+		String ToolsQaAlertResult=driver.findElement(By.className("text-success")).getText();
+		System.out.println("ToolsQaAlertResult: "+ToolsQaAlertResult);
+		Assert.assertEquals(ToolsQaAlertResult, "You selected Cancel");
+		driver.findElement(By.id("promtButton")).click();
+		driver.switchTo().alert();
+		alert1.sendKeys("hi hello is am fine");
+		alert1.accept();
+		String promptResultText=driver.findElement(By.xpath("//span[@class='text-success' and @id='promptResult']")).getText();
+		Assert.assertEquals(promptResultText, "You entered hi hello is am fine");
+	}
+	
+	@Test
+	public void HandlingFrames(){
+		driver.navigate().to("http://demo.automationtesting.in/Frames.html");
+		driver.findElement(By.xpath("//a[@href='#Single']")).click();
+		driver.switchTo().frame("SingleFrame");
+		driver.findElement(By.xpath("//input[@type='text']")).sendKeys("hello");
+		driver.switchTo().defaultContent();
+		driver.findElement(By.xpath("//a[contains(text(),'Iframe with in an Iframe')]")).click();
 	}
 
 	/*

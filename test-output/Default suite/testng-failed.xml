@@ -6,13 +6,15 @@
       <class name="testNg.TestCases">
         <methods>
           <include name="beforeTest"/>
-          <include name="verifyExternalFrameBackpackOrder"/>
           <include name="beforeSuite"/>
+          <include name="HandlingFrames"/>
+          <include name="afterMethod"/>
+          <include name="afterTest"/>
+          <include name="verifyExternalFrameBackpackOrder"/>
           <include name="verifyGmoOnlineLoadedSuccusessfully"/>
           <include name="HandlingAlerts"/>
           <include name="beforeMethod"/>
-          <include name="afterMethod"/>
-          <include name="afterTest"/>
+          <include name="handlingWindows"/>
           <include name="afterClass"/>
           <include name="afterSuite"/>
           <include name="verifyEnterGMOOnlineLoadedSuccessfully"/>

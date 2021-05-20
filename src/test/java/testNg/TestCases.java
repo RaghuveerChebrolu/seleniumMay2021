@@ -12,6 +12,7 @@ import org.testng.annotations.BeforeClass;
 import static org.testng.Assert.assertEquals;
 
 import java.time.Duration;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
@@ -36,7 +37,7 @@ import org.testng.annotations.AfterSuite;
 public class TestCases {
 	WebDriver driver = null;
 
-	@Test(priority=0)
+	@Test(priority = 0)
 	public void verifyGmoOnlineLoadedSuccusessfully() {
 		SoftAssert softAssert = new SoftAssert();
 		System.out.println("inside test1");
@@ -51,7 +52,7 @@ public class TestCases {
 		softAssert.assertAll();
 	}
 
-	@Test(priority=1,dependsOnMethods = { "verifyGmoOnlineLoadedSuccusessfully" })
+	@Test(priority = 1, dependsOnMethods = { "verifyGmoOnlineLoadedSuccusessfully" })
 	public void verifyEnterGMOOnlineLoadedSuccessfully() {
 		waitForPageToLoad(driver);
 		WebElement ele = driver.findElement(By.xpath("//input[@name='bSubmit' and @value='Enter GMO OnLine']"));
@@ -71,7 +72,7 @@ public class TestCases {
 
 	}
 
-	@Test(priority=2,dependsOnMethods = { "verifyEnterGMOOnlineLoadedSuccessfully" })
+	@Test(priority = 2, dependsOnMethods = { "verifyEnterGMOOnlineLoadedSuccessfully" })
 	public void verifyExternalFrameBackpackOrder() {
 		waitForPageToLoad(driver);
 		try {
@@ -103,20 +104,20 @@ public class TestCases {
 		String ExternalFrameBackpackOrderUnitPrice = driver.findElement(By.xpath("//td[contains(text(),'$ 179.95 ')]"))
 				.getText();
 		System.out.println(ExternalFrameBackpackOrderUnitPrice);
-		String value=ExternalFrameBackpackOrderUnitPrice.substring(2);
-		System.out.println("value: "+value);
-		
-		float Unitprice=Float.parseFloat(value.trim());
-		float ExpectedTotalPrice=Unitprice*4;
-		System.out.println("ExpectedTotalPrice:"+ExpectedTotalPrice);
-		String Expected=Float.toString(ExpectedTotalPrice);
-		String AutalTotalPrice=driver.findElement(By.xpath("//table/tbody/tr[2]/td[5]")).getText();
-		System.out.println("AutalTotalPrice from script: "+AutalTotalPrice);
-		float AutalTotalPricefromScript=Float.parseFloat(AutalTotalPrice.substring(2));
-		String Actual=Float.toString(AutalTotalPricefromScript);
-		System.out.println("AutalTotalPricefromScript:"+AutalTotalPricefromScript);
+		String value = ExternalFrameBackpackOrderUnitPrice.substring(2);
+		System.out.println("value: " + value);
+
+		float Unitprice = Float.parseFloat(value.trim());
+		float ExpectedTotalPrice = Unitprice * 4;
+		System.out.println("ExpectedTotalPrice:" + ExpectedTotalPrice);
+		String Expected = Float.toString(ExpectedTotalPrice);
+		String AutalTotalPrice = driver.findElement(By.xpath("//table/tbody/tr[2]/td[5]")).getText();
+		System.out.println("AutalTotalPrice from script: " + AutalTotalPrice);
+		float AutalTotalPricefromScript = Float.parseFloat(AutalTotalPrice.substring(2));
+		String Actual = Float.toString(AutalTotalPricefromScript);
+		System.out.println("AutalTotalPricefromScript:" + AutalTotalPricefromScript);
 		Assert.assertEquals(Actual, Expected);
-		
+
 	}
 
 	public static void waitForPageToLoad(WebDriver driver) {
@@ -128,42 +129,74 @@ public class TestCases {
 		WebDriverWait wait = new WebDriverWait(driver, 60);
 		wait.until(pageLoadCondition);
 	}
-	
-	@Test(priority=3,dependsOnMethods = { "verifyExternalFrameBackpackOrder" })
-		public void HandlingAlerts(){
+
+	@Test(priority = 3, dependsOnMethods = { "verifyExternalFrameBackpackOrder" })
+	public void HandlingAlerts() {
 		driver.navigate().back();
 		System.out.println("Inside test case HandlingAlerts");
 		driver.findElement(By.xpath("//input[@name='QTY_BACKPACKS']")).clear();
 		driver.findElement(By.xpath("//input[@name='bSubmit']")).click();
 		Alert alert = driver.switchTo().alert();
-		String Alerttext=alert.getText();
+		String Alerttext = alert.getText();
 		System.out.println(Alerttext);
 		Assert.assertEquals(Alerttext, "Please Order Something First");
 		alert.accept();
 		driver.navigate().to("https://demoqa.com/alerts");
 		waitForPageToLoad(driver);
 		driver.findElement(By.id("confirmButton")).click();
-		Alert alert1 =driver.switchTo().alert();
+		Alert alert1 = driver.switchTo().alert();
 		alert1.dismiss();
-		String ToolsQaAlertResult=driver.findElement(By.className("text-success")).getText();
-		System.out.println("ToolsQaAlertResult: "+ToolsQaAlertResult);
+		String ToolsQaAlertResult = driver.findElement(By.className("text-success")).getText();
+		System.out.println("ToolsQaAlertResult: " + ToolsQaAlertResult);
 		Assert.assertEquals(ToolsQaAlertResult, "You selected Cancel");
 		driver.findElement(By.id("promtButton")).click();
 		driver.switchTo().alert();
 		alert1.sendKeys("hi hello is am fine");
 		alert1.accept();
-		String promptResultText=driver.findElement(By.xpath("//span[@class='text-success' and @id='promptResult']")).getText();
+		String promptResultText = driver.findElement(By.xpath("//span[@class='text-success' and @id='promptResult']"))
+				.getText();
 		Assert.assertEquals(promptResultText, "You entered hi hello is am fine");
 	}
-	
-	@Test
-	public void HandlingFrames(){
+
+	@Test(priority = 4)
+	public void HandlingFrames() {
 		driver.navigate().to("http://demo.automationtesting.in/Frames.html");
+		waitForPageToLoad(driver);
 		driver.findElement(By.xpath("//a[@href='#Single']")).click();
 		driver.switchTo().frame("SingleFrame");
 		driver.findElement(By.xpath("//input[@type='text']")).sendKeys("hello");
 		driver.switchTo().defaultContent();
 		driver.findElement(By.xpath("//a[contains(text(),'Iframe with in an Iframe')]")).click();
+		WebElement ele = driver.findElement(By.xpath("//iframe[@src='MultipleFrames.html']"));
+		driver.switchTo().frame(ele);
+		WebElement ele1 = driver.findElement(By.xpath("//iframe[@src='SingleFrame.html']"));
+		driver.switchTo().frame(ele1);
+		driver.findElement(By.xpath("//input[@type='text']")).sendKeys("inside second frame");
+		driver.switchTo().defaultContent();
+	}
+
+	@Test(priority = 0)
+	public void handlingWindows() {
+		driver.navigate().to("http://www.naukri.com/");
+		waitForPageToLoad(driver);
+		String mainWindow = driver.getWindowHandle();
+		Set<String> MultipleWindows = driver.getWindowHandles();
+		for (String getsingleWindow : MultipleWindows) {
+			driver.switchTo().window(getsingleWindow);
+			String Title = driver.getTitle();
+			System.out.println(Title);
+			if (Title.equals("Sierra Cedar")) {
+				driver.manage().window().maximize();
+				driver.close();
+			} else if (Title.equals("Sykes")) {
+				driver.manage().window().maximize();
+				driver.close();
+			} else if (Title.equals("Fujitsu")) {
+				driver.manage().window().maximize();
+				driver.close();
+			}
+		}
+
 	}
 
 	/*
@@ -233,6 +266,7 @@ public class TestCases {
 	@AfterSuite
 	public void afterSuite() {
 		System.out.println("inside afterSuite");
+		driver.quit();
 	}
 
 }

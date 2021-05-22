@@ -12,6 +12,7 @@ import org.testng.annotations.BeforeClass;
 import static org.testng.Assert.assertEquals;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
@@ -21,6 +22,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver.Window;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -175,7 +177,7 @@ public class TestCases {
 		driver.switchTo().defaultContent();
 	}
 
-	@Test(priority = 0)
+	@Test(priority = 5)
 	public void handlingWindows() {
 		driver.navigate().to("http://www.naukri.com/");
 		waitForPageToLoad(driver);
@@ -196,6 +198,37 @@ public class TestCases {
 				driver.close();
 			}
 		}
+
+	}
+
+	@Test(priority = 0)
+	public String handlingWebtable() {
+		String Salary = null;
+		driver.navigate().to("https://editor.datatables.net/examples/inline-editing/simple");
+		waitForPageToLoad(driver);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,500)");
+		String LastNameProvidedByUser = "Vance";
+		List<WebElement> AllNames = driver
+				.findElements(By.xpath("//div[@class='dataTables_wrapper no-footer']/table/tbody/tr/td[3]"));
+		System.out.println(AllNames.size());
+		for (int i = 1; i <= AllNames.size(); i++) {
+			String lastname = driver
+					.findElement(
+							By.xpath("//div[@class='dataTables_wrapper no-footer']/table/tbody/tr[" + i + "]/td[3]"))
+					.getText();
+			System.out.println(lastname);
+			if (lastname.equals(LastNameProvidedByUser)) {
+				Salary = driver
+						.findElement(By
+								.xpath("//div[@class='dataTables_wrapper no-footer']/table/tbody/tr[" + i + "]/td[7]"))
+						.getText();
+				System.out.println(Salary);
+				Assert.assertEquals(lastname, LastNameProvidedByUser);
+			}
+
+		}
+		return Salary;
 
 	}
 

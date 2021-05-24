@@ -25,6 +25,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Window;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -201,7 +202,7 @@ public class TestCases {
 
 	}
 
-	@Test(priority = 0)
+	@Test(priority = 6)
 	public String handlingWebtable() {
 		String Salary = null;
 		driver.navigate().to("https://editor.datatables.net/examples/inline-editing/simple");
@@ -230,6 +231,42 @@ public class TestCases {
 		}
 		return Salary;
 
+	}
+	
+	@Test(priority=0)
+	public void mouseOperations(){
+		//right click operation
+		driver.navigate().to("http://swisnl.github.io/jQuery-contextMenu/demo.html");
+		waitForPageToLoad(driver);
+		Actions action =new Actions(driver);//to perform mouse and key board operations
+		WebElement ele=driver.findElement(By.xpath("//span[contains(text(),'right click me')]"));
+		action.contextClick(ele).build().perform();//right click operation
+		//driver.findElement(By.xpath("//span[contains(text(),'right click me')]")).click();
+		driver.findElement(By.xpath("(//span[contains(text(),'Copy')])[2]")).click();
+		Alert alert=driver.switchTo().alert();
+	//	String AlertText=alert.getText();
+		System.out.println("AlertText:"+alert.getText());
+		Assert.assertEquals(alert.getText(), "clicked: copy");
+		alert.accept();
+		//end of right click operation validation
+		//doubleCLick operation
+		driver.navigate().to("https://api.jquery.com/dblclick/");
+		waitForPageToLoad(driver);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		//js.executeScript("window.scrollBy(0,500)"); //for scrolling vertically down
+		//js.executeScript("window.scrollBy(0,-500)");//for scrolling vertically up
+		//js.executeScript("window.scrollBy(1000,0)");////for scrolling horizontally right side
+		//js.executeScript("window.scrollBy(-400,0)");////for scrolling horizontally left side
+		//js.executeScript("window.scrollTo(document.body.scrollHeight,0)");//to scroll vertically up completely
+		//js.executeScript("0,window.scrollTo(document.body.scrollHeight)");//to scroll vertically down completely
+		//js.executeScript("document.querySelector(scroll).scrollLeft=1000");
+		WebElement frameElement=driver.findElement(By.xpath("//iframe"));
+		driver.switchTo().frame(frameElement);
+		WebElement doubleclickElement=driver.findElement(By.xpath("//span[contains(text(),'Double click the block')]/preceding::div"));
+		js.executeScript("arguments[0].scrollIntoView()", doubleclickElement);//mostly we uses this
+		action.doubleClick(doubleclickElement).build().perform();//performs double click operation
+		driver.switchTo().defaultContent();
+		js.executeScript("window.scrollBy(0,-1000)");
 	}
 
 	/*

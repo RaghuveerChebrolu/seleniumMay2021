@@ -11,16 +11,23 @@ import org.testng.annotations.BeforeClass;
 
 import static org.testng.Assert.assertEquals;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Window;
 import org.openqa.selenium.WebElement;
@@ -55,7 +62,7 @@ public class TestCases {
 		softAssert.assertAll();
 	}
 
-	@Test(priority = 1, dependsOnMethods = { "verifyGmoOnlineLoadedSuccusessfully" })
+	@Test(priority = 1, dependsOnMethods = { "verifyGmoOnlineLoadedSuccusessfully" },enabled=false)
 	public void verifyEnterGMOOnlineLoadedSuccessfully() {
 		waitForPageToLoad(driver);
 		WebElement ele = driver.findElement(By.xpath("//input[@name='bSubmit' and @value='Enter GMO OnLine']"));
@@ -75,7 +82,7 @@ public class TestCases {
 
 	}
 
-	@Test(priority = 2, dependsOnMethods = { "verifyEnterGMOOnlineLoadedSuccessfully" })
+	@Test(priority = 2, dependsOnMethods = { "verifyEnterGMOOnlineLoadedSuccessfully" },enabled=false)
 	public void verifyExternalFrameBackpackOrder() {
 		waitForPageToLoad(driver);
 		try {
@@ -133,7 +140,7 @@ public class TestCases {
 		wait.until(pageLoadCondition);
 	}
 
-	@Test(priority = 3, dependsOnMethods = { "verifyExternalFrameBackpackOrder" })
+	@Test(priority = 3, dependsOnMethods = { "verifyExternalFrameBackpackOrder" },enabled=false)
 	public void HandlingAlerts() {
 		driver.navigate().back();
 		System.out.println("Inside test case HandlingAlerts");
@@ -161,7 +168,7 @@ public class TestCases {
 		Assert.assertEquals(promptResultText, "You entered hi hello is am fine");
 	}
 
-	@Test(priority = 4)
+	@Test(priority = 4,enabled=false)
 	public void HandlingFrames() {
 		driver.navigate().to("http://demo.automationtesting.in/Frames.html");
 		waitForPageToLoad(driver);
@@ -178,7 +185,7 @@ public class TestCases {
 		driver.switchTo().defaultContent();
 	}
 
-	@Test(priority = 5)
+	@Test(priority = 5,enabled=false)
 	public void handlingWindows() {
 		driver.navigate().to("http://www.naukri.com/");
 		waitForPageToLoad(driver);
@@ -202,7 +209,7 @@ public class TestCases {
 
 	}
 
-	@Test(priority = 6)
+	@Test(priority = 6,enabled=false)
 	public String handlingWebtable() {
 		String Salary = null;
 		driver.navigate().to("https://editor.datatables.net/examples/inline-editing/simple");
@@ -267,7 +274,44 @@ public class TestCases {
 		action.doubleClick(doubleclickElement).build().perform();//performs double click operation
 		driver.switchTo().defaultContent();
 		js.executeScript("window.scrollBy(0,-1000)");
+		//drag and drop
+		driver.navigate().to("https://jqueryui.com/droppable/");
+		waitForPageToLoad(driver);
+		js.executeScript("window.scrollBy(0,500)");
+		WebElement frameEle=driver.findElement(By.xpath("//iframe"));
+		driver.switchTo().frame(frameEle);
+		WebElement source=driver.findElement(By.id("draggable"));
+		WebElement target=driver.findElement(By.id("droppable"));
+		action.dragAndDrop(source, target).build().perform();
+		System.out.println(target.getAttribute("background"));
+		System.out.println(target.getAttribute("style"));
+		System.out.println(target.getAttribute("background-color"));
+		System.out.println(target.getCssValue("style"));
+		System.out.println(target.getCssValue("color"));
+		System.out.println(target.getCssValue("background-color"));
+		System.out.println(target.getText());
+		Assert.assertEquals(target.getText(), "Dropped!");
+		screenShot(driver);
+		
 	}
+
+	
+	public String screenShot(WebDriver driver){
+		
+		File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+		System.out.println(dateName);
+		String destination = System.getProperty("user.dir") + "//src//test//ressources//screenshots//" + dateName + "captured.png";
+		System.out.println(destination);
+		try {
+			FileUtils.copyFile(source, new File(destination));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return destination;
+	}
+	
 
 	/*
 	 * //@Test(priority=-4,enabled=false)

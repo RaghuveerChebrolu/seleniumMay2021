@@ -11,6 +11,7 @@
           <include name="beforeMethod"/>
           <include name="afterMethod"/>
           <include name="afterTest"/>
+          <include name="mouseOperations"/>
           <include name="afterClass"/>
           <include name="afterSuite"/>
           <include name="beforeClass"/>

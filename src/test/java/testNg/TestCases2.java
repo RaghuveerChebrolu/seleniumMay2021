@@ -5,6 +5,7 @@ import org.testng.asserts.SoftAssert;
 
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import utility.lib;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
@@ -21,6 +22,7 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -53,7 +55,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.AfterSuite;
 
-public class TestCases {
+public class TestCases2 {
 	WebDriver driver = null;
 
 	@Test(priority = 0)
@@ -425,8 +427,10 @@ public class TestCases {
 	}
 
 	@BeforeSuite
-	public void beforeSuite() {
+	public void beforeSuite() throws IOException {
 		System.out.println("inside beforeSuite");
+		lib.readingConfigurationProprtyFile();
+		
 		
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();

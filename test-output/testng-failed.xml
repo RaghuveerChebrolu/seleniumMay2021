@@ -3,20 +3,19 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testNg.TestCases">
+      <class name="testNg.TestCases2">
         <methods>
-          <include name="beforeTest"/>
-          <include name="beforeSuite"/>
-          <include name="verifyGmoOnlineLoadedSuccusessfully"/>
           <include name="beforeMethod"/>
+          <include name="beforeClass"/>
+          <include name="afterSuite"/>
+          <include name="beforeTest"/>
           <include name="afterMethod"/>
           <include name="afterTest"/>
-          <include name="mouseOperations"/>
+          <include name="beforeSuite"/>
           <include name="afterClass"/>
-          <include name="afterSuite"/>
-          <include name="beforeClass"/>
+          <include name="HandlingFrames"/>
         </methods>
-      </class> <!-- testNg.TestCases -->
+      </class> <!-- testNg.TestCases2 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

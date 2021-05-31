@@ -3,6 +3,8 @@ package testNg;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import com.aventstack.extentreports.Status;
+import com.utility.objectRepository;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import utility.lib;
@@ -22,17 +24,23 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -49,19 +57,21 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.AfterSuite;
 
-public class TestCases2 {
-	WebDriver driver = null;
-
-	@Test(priority = 0)
+public class TestCases2 extends lib {
+	HashMap<String, String> hm = new HashMap<String, String>();
+	
+	@Test(priority = 0, enabled = false)
 	public void verifyGmoOnlineLoadedSuccusessfully() {
-		SoftAssert softAssert = new SoftAssert();
 		System.out.println("inside test1");
+		SoftAssert softAssert = new SoftAssert();
+		Extenttest = ExtentReport.createTest(testcaseName());
 		String ActualTitle = driver.findElement(By.xpath("//font[contains(text(),'GMO OnLine')]")).getText();
 		System.out.println("tile of gmo online " + ActualTitle);
 		String expectedTitle = "GMO OnLine";
@@ -75,7 +85,8 @@ public class TestCases2 {
 
 	@Test(priority = 1, dependsOnMethods = { "verifyGmoOnlineLoadedSuccusessfully" }, enabled = false)
 	public void verifyEnterGMOOnlineLoadedSuccessfully() {
-		waitForPageToLoad(driver);
+		lib.waitForPageToLoad(driver);
+		Extenttest = ExtentReport.createTest(testcaseName());
 		WebElement ele = driver.findElement(By.xpath("//input[@name='bSubmit' and @value='Enter GMO OnLine']"));
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView()", ele);
@@ -95,7 +106,8 @@ public class TestCases2 {
 
 	@Test(priority = 2, dependsOnMethods = { "verifyEnterGMOOnlineLoadedSuccessfully" }, enabled = false)
 	public void verifyExternalFrameBackpackOrder() {
-		waitForPageToLoad(driver);
+		lib.waitForPageToLoad(driver);
+		Extenttest = ExtentReport.createTest(testcaseName());
 		try {
 			driver.findElement(By.xpath("//input[@name='QTY_BACKPACKS']")).sendKeys("4");
 		} catch (Exception e) {
@@ -141,29 +153,22 @@ public class TestCases2 {
 
 	}
 
-	public static void waitForPageToLoad(WebDriver driver) {
-		ExpectedCondition<Boolean> pageLoadCondition = new ExpectedCondition<Boolean>() {
-			public Boolean apply(WebDriver driver) {
-				return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
-			}
-		};
-		WebDriverWait wait = new WebDriverWait(driver, 60);
-		wait.until(pageLoadCondition);
-	}
-
-	@Test(priority = 3, dependsOnMethods = { "verifyExternalFrameBackpackOrder" }, enabled = false)
+	@Test(priority = 3)
 	public void HandlingAlerts() {
-		driver.navigate().back();
-		System.out.println("Inside test case HandlingAlerts");
-		driver.findElement(By.xpath("//input[@name='QTY_BACKPACKS']")).clear();
-		driver.findElement(By.xpath("//input[@name='bSubmit']")).click();
-		Alert alert = driver.switchTo().alert();
-		String Alerttext = alert.getText();
-		System.out.println(Alerttext);
-		Assert.assertEquals(Alerttext, "Please Order Something First");
-		alert.accept();
-		driver.navigate().to("https://demoqa.com/alerts");
-		waitForPageToLoad(driver);
+		Extenttest = ExtentReport.createTest(testcaseName());
+		/*
+		 * driver.navigate().back(); System.out.println(
+		 * "Inside test case HandlingAlerts");
+		 * driver.findElement(By.xpath("//input[@name='QTY_BACKPACKS']")).clear(
+		 * ); driver.findElement(By.xpath("//input[@name='bSubmit']")).click();
+		 * Alert alert = driver.switchTo().alert(); String Alerttext =
+		 * alert.getText(); System.out.println(Alerttext);
+		 * Assert.assertEquals(Alerttext, "Please Order Something First");
+		 * alert.accept();
+		 */
+		// System.out.println(property.getProperty("AlertURL"));
+		lib.navigateToUrl("AlertURL", driver);
+		lib.waitForPageToLoad(driver);
 		driver.findElement(By.id("confirmButton")).click();
 		Alert alert1 = driver.switchTo().alert();
 		alert1.dismiss();
@@ -179,10 +184,11 @@ public class TestCases2 {
 		Assert.assertEquals(promptResultText, "You entered hi hello is am fine");
 	}
 
-	@Test(priority = 4, enabled = false)
+	@Test(priority = 4)
 	public void HandlingFrames() {
-		driver.navigate().to("http://demo.automationtesting.in/Frames.html");
-		waitForPageToLoad(driver);
+		Extenttest = ExtentReport.createTest(testcaseName());
+		lib.navigateToUrl("FramesURL", driver);
+		lib.waitForPageToLoad(driver);
 		driver.findElement(By.xpath("//a[@href='#Single']")).click();
 		driver.switchTo().frame("SingleFrame");
 		driver.findElement(By.xpath("//input[@type='text']")).sendKeys("hello");
@@ -196,10 +202,11 @@ public class TestCases2 {
 		driver.switchTo().defaultContent();
 	}
 
-	@Test(priority = 5, enabled = false)
+	@Test(priority = 5)
 	public void handlingWindows() {
-		driver.navigate().to("http://www.naukri.com/");
-		waitForPageToLoad(driver);
+		Extenttest = ExtentReport.createTest(testcaseName());
+		lib.navigateToUrl("FramesURL", driver);
+		lib.waitForPageToLoad(driver);
 		String mainWindow = driver.getWindowHandle();
 		Set<String> MultipleWindows = driver.getWindowHandles();
 		for (String getsingleWindow : MultipleWindows) {
@@ -220,11 +227,12 @@ public class TestCases2 {
 
 	}
 
-	@Test(priority = 6, enabled = false)
+	@Test(priority = 6)
 	public String handlingWebtable() {
+		Extenttest = ExtentReport.createTest(testcaseName());
 		String Salary = null;
-		driver.navigate().to("https://editor.datatables.net/examples/inline-editing/simple");
-		waitForPageToLoad(driver);
+		lib.navigateToUrl("WebTableURL", driver);
+		lib.waitForPageToLoad(driver);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,500)");
 		String LastNameProvidedByUser = "Vance";
@@ -253,9 +261,10 @@ public class TestCases2 {
 
 	@Test(priority = 7)
 	public void mouseOperations() {
+		Extenttest = ExtentReport.createTest(testcaseName());
 		// right click operation
-		driver.navigate().to("http://swisnl.github.io/jQuery-contextMenu/demo.html");
-		waitForPageToLoad(driver);
+		lib.navigateToUrl("mouseOpeartionRightClick", driver);
+		lib.waitForPageToLoad(driver);
 		Actions action = new Actions(driver);// to perform mouse and key board
 												// operations
 		WebElement ele = driver.findElement(By.xpath("//span[contains(text(),'right click me')]"));
@@ -270,8 +279,9 @@ public class TestCases2 {
 		alert.accept();
 		// end of right click operation validation
 		// doubleCLick operation
-		driver.navigate().to("https://api.jquery.com/dblclick/");
-		waitForPageToLoad(driver);
+		lib.navigateToUrl("mouseOpeartionDoubleClick", driver);
+		// driver.navigate().to(property.getProperty("mouseOpeartionDoubleClick"));
+		lib.waitForPageToLoad(driver);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		// js.executeScript("window.scrollBy(0,500)"); //for scrolling
 		// vertically down
@@ -301,8 +311,9 @@ public class TestCases2 {
 		driver.switchTo().defaultContent();
 		js.executeScript("window.scrollBy(0,-1000)");
 		// drag and drop
-		driver.navigate().to("https://jqueryui.com/droppable/");
-		waitForPageToLoad(driver);
+		lib.navigateToUrl("mouseOperationDragAndDrop", driver);
+		// driver.navigate().to(property.getProperty("mouseOperationDragAndDrop"));
+		lib.waitForPageToLoad(driver);
 		js.executeScript("window.scrollBy(0,500)");
 		WebElement frameEle = driver.findElement(By.xpath("//iframe"));
 		driver.switchTo().frame(frameEle);
@@ -321,11 +332,12 @@ public class TestCases2 {
 
 	}
 
-	@Test(priority = 0)
+	@Test(priority = 8)
 	public void FileUpload() throws AWTException, InterruptedException {
-		driver.navigate().to("http://demo.automationtesting.in/FileUpload.html");
-		waitForPageToLoad(driver);
-	
+		Extenttest = ExtentReport.createTest(testcaseName());
+		lib.navigateToUrl("FileUpload", driver);
+		lib.waitForPageToLoad(driver);
+
 		// open upload window
 		WebElement ele = driver.findElement(By.xpath("//input[@id='input-4']"));
 		// JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -333,8 +345,9 @@ public class TestCases2 {
 		Actions obj = new Actions(driver);
 		obj.click(ele).build().perform();
 		System.out.println(System.getProperty("user.dir"));
-		
-		StringSelection stringSelection = new StringSelection(System.getProperty("user.dir") + "\\src\\test\\ressources\\Sample.jpg");
+
+		StringSelection stringSelection = new StringSelection(
+				System.getProperty("user.dir") + "\\src\\test\\ressources\\Sample.jpg");
 		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 		clipboard.setContents(stringSelection, null);
 		try {
@@ -344,7 +357,7 @@ public class TestCases2 {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		// imitate mouse events like ENTER, CTRL+C, CTRL+V
 		Robot robot = new Robot();
 		robot.delay(250);
@@ -363,7 +376,123 @@ public class TestCases2 {
 		robot.keyRelease(KeyEvent.VK_ENTER);
 	}
 
+	@Test(priority=9)
+	public void DataDriven(){
+		try {
+			FileInputStream objFileInput = new FileInputStream(
+					new File(System.getProperty("user.dir") + "//src/test//ressources//AutomationDemoSite.xlsx"));
+			System.out.println("objFileFileInputStream: " + objFileInput);
+			XSSFWorkbook objXSSFWorkbook = new XSSFWorkbook(objFileInput);
+			XSSFSheet objXSSFSheet = objXSSFWorkbook.getSheet("TestData");
+			int RowsCount = objXSSFSheet.getLastRowNum();
+			System.out.println("RowsCount: " + RowsCount);
+			for (int rowNumber = 1; rowNumber <= RowsCount; rowNumber++) {
+				readTestData(rowNumber, objXSSFSheet);
+				if (hm.get("RunMode").equals("Yes")) {
+					
+					driver.findElement(By.xpath("(//input[@type='text'])[1]")).clear();
+					driver.findElement(By.xpath("(//input[@type='text'])[1]")).sendKeys(hm.get("FirstName"));
+					
+					driver.findElement(By.xpath("(//input[@type='text'])[2]")).clear();
+					driver.findElement(By.xpath("(//input[@type='text'])[2]")).sendKeys(hm.get("LastName"));
+					
+					driver.findElement(By.xpath("//textarea[@rows='3']")).clear();
+					driver.findElement(By.xpath("//textarea[@rows='3']")).sendKeys(hm.get("Address"));
+					
+					driver.findElement(By.xpath("//input[@type='email']")).clear();
+					driver.findElement(By.xpath("//input[@type='email']")).sendKeys(hm.get("EmailAddress"));
+					
+					
+					driver.findElement(By.xpath("//input[@type='tel']")).clear();
+					driver.findElement(By.xpath("//input[@type='tel']")).sendKeys(hm.get("PhoneNumber"));
+					
+					if(hm.get("Gender").equalsIgnoreCase("Male")){
+						
+						driver.findElement(By.xpath("(//input[@name='radiooptions'])[1]")).click();
+					}else if(hm.get("Gender").equalsIgnoreCase("female")){
+						
+						driver.findElement(By.xpath("(//input[@name='radiooptions'])[2]")).click();
+					}
+					
+					if(hm.get("Hobbies").equalsIgnoreCase("cricket")){
+						driver.findElement(By.xpath("//input[@value='Cricket']")).click();
+					}else if(hm.get("Hobbies").equalsIgnoreCase("movies")){
+						driver.findElement(By.xpath("//input[@value='Movies']")).click();
+					}else if(hm.get("Hobbies").equalsIgnoreCase("hockey")){
+						driver.findElement(By.xpath("//input[@value='Hockey']")).click();
+					}
+					
+					SelectValueFromDropdown(driver,"//div[@id='msdd']",hm.get("Languages"));
+					SelectValueFromDropdown(driver,"//div[@id='Skills']",hm.get("Languages"));
+					SelectValueFromDropdown(driver,"//div[@id='msdd']",hm.get("Languages"));
+					
+					
+					driver.findElement(By.xpath("(//input[@type='text'])[1]")).clear();
+					driver.findElement(By.xpath("(//input[@type='text'])[1]")).sendKeys(hm.get("Languages"));
+					SelectValueFromDropdown(driver, objectRepository.customerCardType, hm.get("Skills"));
+					lib.findElement(driver, objectRepository.customerCardNumber).clear();
+					lib.findElement(driver, objectRepository.customerCardNumber).sendKeys(hm.get("SelectCountry"));
+					lib.findElement(driver, objectRepository.customerCardDate).clear();
+					lib.findElement(driver, objectRepository.customerCardDate).sendKeys(hm.get("DOB_YY"));
+					lib.findElement(driver, objectRepository.customerCardDate).sendKeys(hm.get("DOB_MM"));
+					
+					lib.findElement(driver, objectRepository.customerCardDate).sendKeys(hm.get("DOB_DD"));
+					lib.findElement(driver, objectRepository.customerCardDate).sendKeys(hm.get("Password"));
+					lib.findElement(driver, objectRepository.customerCardDate).sendKeys(hm.get("confirmPassword"));
+					
+					FileOutputStream objfileoutput = new FileOutputStream(objFile);
+					uploadTheResultToExcel(objXSSFWorkbook,rowNumber);
+					objXSSFWorkbook.write(objfileoutput);
+					objfileoutput.close();
+				} else {
+					System.out.println("RunMode is not marked as Yes for row number " + rowNumber);
+				}
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
 	// helper methods
+	
+	private void readTestData(int rowNumber, XSSFSheet objXSSFSheet) {
+		DataFormatter DataFormatterObj = new DataFormatter();
+		hm.put("RunMode", objXSSFSheet.getRow(rowNumber).getCell(0).getStringCellValue());
+		hm.put("TestCaseName", objXSSFSheet.getRow(rowNumber).getCell(1).getStringCellValue());
+		hm.put("FirstName", objXSSFSheet.getRow(rowNumber).getCell(2).getStringCellValue());
+		hm.put("LastName", objXSSFSheet.getRow(rowNumber).getCell(3).getStringCellValue());
+		hm.put("Address", objXSSFSheet.getRow(rowNumber).getCell(4).getStringCellValue());
+		hm.put("EmailAddress", objXSSFSheet.getRow(rowNumber).getCell(5).getStringCellValue());
+		String phoneNumber = DataFormatterObj.formatCellValue(objXSSFSheet.getRow(rowNumber).getCell(6));
+		hm.put("PhoneNumber", phoneNumber);
+		hm.put("Gender", objXSSFSheet.getRow(rowNumber).getCell(7).getStringCellValue());
+		hm.put("Hobbies", objXSSFSheet.getRow(rowNumber).getCell(8).getStringCellValue());
+		hm.put("Languages", objXSSFSheet.getRow(rowNumber).getCell(9).getStringCellValue());
+		hm.put("Skills", objXSSFSheet.getRow(rowNumber).getCell(10).getStringCellValue());
+		hm.put("Country", objXSSFSheet.getRow(rowNumber).getCell(11).getStringCellValue());
+		hm.put("SelectCountry", objXSSFSheet.getRow(rowNumber).getCell(12).getStringCellValue());
+		
+		String DOB_YY = DataFormatterObj.formatCellValue(objXSSFSheet.getRow(rowNumber).getCell(13));
+		hm.put("DOB_YY", DOB_YY);
+	
+		hm.put("DOB_MM", objXSSFSheet.getRow(rowNumber).getCell(14).getStringCellValue());
+		
+		String DOB_DD = DataFormatterObj.formatCellValue(objXSSFSheet.getRow(rowNumber).getCell(15));
+		hm.put("DOB_DD", DOB_DD);
+		
+		hm.put("Password", objXSSFSheet.getRow(rowNumber).getCell(16).getStringCellValue());
+		hm.put("confirmPassword", objXSSFSheet.getRow(rowNumber).getCell(17).getStringCellValue());
+
+	}
+
+	//return test case name
+	private String testcaseName() {
+		String NameoftTestCase=new Object() {}.getClass().getEnclosingMethod().getName();
+		return NameoftTestCase;
+	}
+
 	public String screenShot(WebDriver driver) {
 
 		File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -400,15 +529,27 @@ public class TestCases2 {
 	public void beforeMethod() {
 		System.out.println("inside beforeMethod");
 	}
-
+	
 	@AfterMethod
-	public void afterMethod() {
+	public void afterMethod(ITestResult result) throws Exception {
 		System.out.println("inside afterMethod");
+		if (result.getStatus() == ITestResult.FAILURE) {
+			Extenttest.log(Status.FAIL, "Test Cases Failed is : " + result.getName());
+			Extenttest.log(Status.FAIL, "Test Cases Failed is : " + result.getThrowable());
+			String SSpath = lib.takescreeshot(driver, result.getName());
+			Extenttest.addScreenCaptureFromPath(SSpath);
+		} else if (result.getStatus() == ITestResult.SUCCESS) {
+			Extenttest.log(Status.PASS, "Test Cases pass is : " + result.getName());
+		} else if (result.getStatus() == ITestResult.SKIP) {
+			Extenttest.log(Status.SKIP, "Test Cases Skipped is : " + result.getName());
+		}
+	
 	}
 
 	@BeforeClass
 	public void beforeClass() {
 		System.out.println("inside beforeClass");
+		lib.launchBrowser();
 	}
 
 	@AfterClass
@@ -419,32 +560,19 @@ public class TestCases2 {
 	@BeforeTest
 	public void beforeTest() {
 		System.out.println("inside beforeTest");
+		lib.startReport();
 	}
 
 	@AfterTest
 	public void afterTest() {
 		System.out.println("inside afterTest");
+		ExtentReport.flush();
 	}
-
+	
 	@BeforeSuite
 	public void beforeSuite() throws IOException {
 		System.out.println("inside beforeSuite");
 		lib.readingConfigurationProprtyFile();
-		
-		
-		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver();
-		driver.manage().window().maximize();// it maximizes our browser
-		// global waiting mechanism .To tell webdriver to wait for all
-		// webelements that
-		// is declared below the this statement
-
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.get("https://demo.borland.com/gmopost/");
-
-		// driver.findElement(By.name("username")).sendKeys("user@phptravels.com");
-		// driver.findElement(By.tagName("input")).sendKeys("user@phptravels.com");
-
 	}
 
 	@AfterSuite

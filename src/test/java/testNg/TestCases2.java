@@ -4,7 +4,6 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import com.aventstack.extentreports.Status;
-import com.utility.objectRepository;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import utility.lib;
@@ -376,8 +375,10 @@ public class TestCases2 extends lib {
 		robot.keyRelease(KeyEvent.VK_ENTER);
 	}
 
-	@Test(priority=9)
-	public void DataDriven(){
+	@Test(priority=0)
+	public void DataDrivenAutomationDemoSite() throws IOException{
+		lib.navigateToUrl("AutomationRegister", driver);
+		lib.waitForPageToLoad(driver);
 		try {
 			FileInputStream objFileInput = new FileInputStream(
 					new File(System.getProperty("user.dir") + "//src/test//ressources//AutomationDemoSite.xlsx"));
@@ -422,14 +423,23 @@ public class TestCases2 extends lib {
 						driver.findElement(By.xpath("//input[@value='Hockey']")).click();
 					}
 					
-					SelectValueFromDropdown(driver,"//div[@id='msdd']",hm.get("Languages"));
-					SelectValueFromDropdown(driver,"//div[@id='Skills']",hm.get("Languages"));
-					SelectValueFromDropdown(driver,"//div[@id='msdd']",hm.get("Languages"));
+					SelectValueFromDropdown(driver,"//div[@id='msdd']","//div[@id='msdd']/following-sibling::div/ul/li",hm.get("Languages"));
+					driver.findElement(By.xpath("//input[@id='secondpassword']")).click();
+					SelectValueFromDropdown(driver,"//select[@id='Skills']",hm.get("Skills"));
+					SelectValueFromDropdown(driver,"//select[@id='countries']",hm.get("Country"));
+					SelectValueFromDropdown(driver,"//span[@id='select2-country-container']/..",hm.get("SelectCountry"));
+					SelectValueFromDropdown(driver,"//select[@id='yearbox']",hm.get("DOB_YY"));
+					SelectValueFromDropdown(driver,"//select[@type='text' and @placeholder='Month']",hm.get("DOB_MM"));
+					SelectValueFromDropdown(driver,"//*[@id='daybox']",hm.get("DOB_DD"));
+					
+					driver.findElement(By.xpath("//input[@id='firstpassword']")).clear();
+					driver.findElement(By.xpath("//input[@id='firstpassword']")).sendKeys(hm.get("Password"));
+					
+					driver.findElement(By.xpath("//input[@id='secondpassword']")).clear();
+					driver.findElement(By.xpath("//input[@id='secondpassword']")).sendKeys(hm.get("ConfirmPassword"));
 					
 					
-					driver.findElement(By.xpath("(//input[@type='text'])[1]")).clear();
-					driver.findElement(By.xpath("(//input[@type='text'])[1]")).sendKeys(hm.get("Languages"));
-					SelectValueFromDropdown(driver, objectRepository.customerCardType, hm.get("Skills"));
+					/*SelectValueFromDropdown(driver, objectRepository.customerCardType, hm.get("Skills"));
 					lib.findElement(driver, objectRepository.customerCardNumber).clear();
 					lib.findElement(driver, objectRepository.customerCardNumber).sendKeys(hm.get("SelectCountry"));
 					lib.findElement(driver, objectRepository.customerCardDate).clear();
@@ -443,7 +453,7 @@ public class TestCases2 extends lib {
 					FileOutputStream objfileoutput = new FileOutputStream(objFile);
 					uploadTheResultToExcel(objXSSFWorkbook,rowNumber);
 					objXSSFWorkbook.write(objfileoutput);
-					objfileoutput.close();
+					objfileoutput.close();*/
 				} else {
 					System.out.println("RunMode is not marked as Yes for row number " + rowNumber);
 				}

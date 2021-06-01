@@ -5,13 +5,18 @@
     <classes>
       <class name="testNg.TestCases2">
         <methods>
+          <include name="mouseOperations"/>
+          <include name="afterMethod"/>
+          <include name="DataDrivenAutomationDemoSite"/>
+          <include name="afterTest"/>
+          <include name="beforeSuite"/>
+          <include name="HandlingAlerts"/>
           <include name="beforeMethod"/>
           <include name="beforeClass"/>
           <include name="afterSuite"/>
           <include name="beforeTest"/>
-          <include name="afterMethod"/>
-          <include name="afterTest"/>
-          <include name="beforeSuite"/>
+          <include name="handlingWindows"/>
+          <include name="FileUpload"/>
           <include name="afterClass"/>
           <include name="HandlingFrames"/>
         </methods>

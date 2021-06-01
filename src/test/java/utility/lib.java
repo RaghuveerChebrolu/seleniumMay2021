@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -29,7 +30,6 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import com.utility.lib;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -39,15 +39,17 @@ public class lib {
 	public static ExtentHtmlReporter htmlReporter;
 	public static ExtentReports ExtentReport;
 	public static ExtentTest Extenttest;
-	
-/*	ExtentHtmlReporter : responsible for look and feel of the report ,we can specify the report name , 
-	document title , theme of the report.
-	
-	ExtentReports : used to create entries in your report , create test cases in report , who executed the test case, 
-	environment name , browser 
-	
-	ExtentTest : update pass fail and skips and logs  the test cases results*/
-	
+
+	/*
+	 * ExtentHtmlReporter : responsible for look and feel of the report ,we can
+	 * specify the report name , document title , theme of the report.
+	 * 
+	 * ExtentReports : used to create entries in your report , create test cases
+	 * in report , who executed the test case, environment name , browser
+	 * 
+	 * ExtentTest : update pass fail and skips and logs the test cases results
+	 */
+
 	public static void readingConfigurationProprtyFile() throws IOException {
 		FileInputStream objFileInput = new FileInputStream(
 				new File(System.getProperty("user.dir") + "//src/test//ressources//configurationProperty.properties"));
@@ -73,7 +75,7 @@ public class lib {
 		ExtentReport.setSystemInfo("Environment", property.getProperty("environment"));
 		ExtentReport.setSystemInfo("Browser", property.getProperty("browser"));
 	}
-	
+
 	public static void launchBrowser() {
 		if (property.getProperty("browser").equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
@@ -136,6 +138,9 @@ public class lib {
 		case "FileUpload":
 			driver.navigate().to(property.getProperty("FileUpload"));
 			break;
+		case "AutomationRegister":
+			driver.navigate().to(property.getProperty("AutomationRegister"));
+			break;
 		default:
 			System.out.println("this is default switch satement");
 		}
@@ -150,7 +155,7 @@ public class lib {
 		WebDriverWait wait = new WebDriverWait(driver, 60);
 		wait.until(pageLoadCondition);
 	}
-	
+
 	public static String takescreeshot(WebDriver driver, String name) throws Exception {
 		File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
@@ -160,13 +165,27 @@ public class lib {
 		FileUtils.copyFile(source, new File(destination));
 		return destination;
 	}
-	
+
 	protected static void SelectValueFromDropdown(WebDriver driver, String xpath, String dropdownvalue) {
-		
+
 		WebElement objweb = driver.findElement(By.xpath(xpath));
+		objweb.click();
 		Select objselect = new Select(objweb);
 		objselect.selectByVisibleText(dropdownvalue);
-		
+
+	}
+
+	protected static void SelectValueFromDropdown(WebDriver driver, String xpath, String xpath2, String dropdownvalue) {
+		driver.findElement(By.xpath(xpath)).click();
+		List<WebElement> AllValues = driver.findElements(By.xpath(xpath2));
+		System.out.println(AllValues.size());
+		for (int i = 0; i < AllValues.size(); i++) {
+			String language = AllValues.get(i).getText();
+			System.out.println(language);
+			if (language.equals(dropdownvalue)) {
+				AllValues.get(i).click();
+			}
+		}
 	}
 
 }

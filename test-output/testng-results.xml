@@ -1,128 +1,365 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="3" total="8" passed="5">
+<testng-results skipped="5" failed="1" ignored="3" total="9" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="52566" started-at="2021-05-31T02:23:01Z" finished-at="2021-05-31T02:23:54Z">
+  <suite name="Default suite" duration-ms="16264" started-at="2021-06-01T17:58:13Z" finished-at="2021-06-01T17:58:30Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="52566" started-at="2021-05-31T02:23:01Z" finished-at="2021-05-31T02:23:54Z">
+    <test name="Default test" duration-ms="16264" started-at="2021-06-01T17:58:13Z" finished-at="2021-06-01T17:58:30Z">
       <class name="testNg.TestCases2">
-        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:testNg.TestCases2@67b92f0a]" name="beforeSuite" is-config="true" duration-ms="23" started-at="2021-05-31T02:23:01Z" finished-at="2021-05-31T02:23:01Z">
+        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:testNg.TestCases2@43814d18]" name="beforeSuite" is-config="true" duration-ms="20" started-at="2021-06-01T17:58:13Z" finished-at="2021-06-01T17:58:13Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuite -->
-        <test-method status="PASS" signature="beforeTest()[pri:0, instance:testNg.TestCases2@67b92f0a]" name="beforeTest" is-config="true" duration-ms="273" started-at="2021-05-31T02:23:01Z" finished-at="2021-05-31T02:23:02Z">
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:testNg.TestCases2@43814d18]" name="beforeTest" is-config="true" duration-ms="162" started-at="2021-06-01T17:58:13Z" finished-at="2021-06-01T17:58:14Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="beforeClass()[pri:0, instance:testNg.TestCases2@67b92f0a]" name="beforeClass" is-config="true" duration-ms="8085" started-at="2021-05-31T02:23:02Z" finished-at="2021-05-31T02:23:10Z">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:testNg.TestCases2@43814d18]" name="beforeClass" is-config="true" duration-ms="4365" started-at="2021-06-01T17:58:14Z" finished-at="2021-06-01T17:58:18Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testNg.TestCases2@67b92f0a]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2021-05-31T02:23:10Z" finished-at="2021-05-31T02:23:10Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testNg.TestCases2@43814d18]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2021-06-01T17:58:18Z" finished-at="2021-06-01T17:58:18Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="HandlingAlerts()[pri:3, instance:testNg.TestCases2@67b92f0a]" name="HandlingAlerts" duration-ms="6458" started-at="2021-05-31T02:23:10Z" finished-at="2021-05-31T02:23:16Z">
+        <test-method status="FAIL" signature="DataDrivenAutomationDemoSite()[pri:0, instance:testNg.TestCases2@43814d18]" name="DataDrivenAutomationDemoSite" duration-ms="11670" started-at="2021-06-01T17:58:18Z" finished-at="2021-06-01T17:58:30Z">
+          <exception class="org.openqa.selenium.support.ui.UnexpectedTagNameException">
+            <message>
+              <![CDATA[Element should have been "select" but was "span"
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-A9DN365', ip: '192.168.143.30', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_91'
+Driver info: driver.version: unknown]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.support.ui.UnexpectedTagNameException: Element should have been "select" but was "span"
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-A9DN365', ip: '192.168.143.30', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_91'
+Driver info: driver.version: unknown
+at org.openqa.selenium.support.ui.Select.<init>(Select.java:48)
+at utility.lib.SelectValueFromDropdown(lib.java:173)
+at testNg.TestCases2.DataDrivenAutomationDemoSite(TestCases2.java:430)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.support.ui.UnexpectedTagNameException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- DataDrivenAutomationDemoSite -->
+        <test-method status="FAIL" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:testNg.TestCases2@43814d18]" name="afterMethod" is-config="true" duration-ms="7" started-at="2021-06-01T17:58:30Z" finished-at="2021-06-01T17:58:30Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=DataDrivenAutomationDemoSite status=FAILURE method=TestCases2.DataDrivenAutomationDemoSite()[pri:0, instance:testNg.TestCases2@43814d18] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+at testNg.TestCases2.afterMethod(TestCases2.java:547)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:455)
+at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="SKIP" signature="beforeMethod()[pri:0, instance:testNg.TestCases2@43814d18]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2021-06-01T17:58:30Z" finished-at="2021-06-01T17:58:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="SKIP" signature="HandlingAlerts()[pri:3, instance:testNg.TestCases2@43814d18]" name="HandlingAlerts" duration-ms="0" started-at="2021-06-01T17:58:30Z" finished-at="2021-06-01T17:58:30Z">
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+at testNg.TestCases2.afterMethod(TestCases2.java:547)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:455)
+at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- HandlingAlerts -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:testNg.TestCases2@67b92f0a]" name="afterMethod" is-config="true" duration-ms="18" started-at="2021-05-31T02:23:16Z" finished-at="2021-05-31T02:23:16Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=HandlingAlerts status=SUCCESS method=TestCases2.HandlingAlerts()[pri:3, instance:testNg.TestCases2@67b92f0a] output={null}]]]>
-              </value>
-            </param>
-          </params>
+        <test-method status="SKIP" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:testNg.TestCases2@43814d18]" name="afterMethod" is-config="true" duration-ms="0" started-at="2021-06-01T17:58:30Z" finished-at="2021-06-01T17:58:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testNg.TestCases2@67b92f0a]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2021-05-31T02:23:16Z" finished-at="2021-05-31T02:23:16Z">
+        <test-method status="SKIP" signature="beforeMethod()[pri:0, instance:testNg.TestCases2@43814d18]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2021-06-01T17:58:30Z" finished-at="2021-06-01T17:58:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="HandlingFrames()[pri:4, instance:testNg.TestCases2@67b92f0a]" name="HandlingFrames" duration-ms="5701" started-at="2021-05-31T02:23:16Z" finished-at="2021-05-31T02:23:22Z">
+        <test-method status="SKIP" signature="HandlingFrames()[pri:4, instance:testNg.TestCases2@43814d18]" name="HandlingFrames" duration-ms="0" started-at="2021-06-01T17:58:30Z" finished-at="2021-06-01T17:58:30Z">
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+at testNg.TestCases2.afterMethod(TestCases2.java:547)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:455)
+at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- HandlingFrames -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:testNg.TestCases2@67b92f0a]" name="afterMethod" is-config="true" duration-ms="2" started-at="2021-05-31T02:23:22Z" finished-at="2021-05-31T02:23:22Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=HandlingFrames status=SUCCESS method=TestCases2.HandlingFrames()[pri:4, instance:testNg.TestCases2@67b92f0a] output={null}]]]>
-              </value>
-            </param>
-          </params>
+        <test-method status="SKIP" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:testNg.TestCases2@43814d18]" name="afterMethod" is-config="true" duration-ms="0" started-at="2021-06-01T17:58:30Z" finished-at="2021-06-01T17:58:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testNg.TestCases2@67b92f0a]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2021-05-31T02:23:22Z" finished-at="2021-05-31T02:23:22Z">
+        <test-method status="SKIP" signature="beforeMethod()[pri:0, instance:testNg.TestCases2@43814d18]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2021-06-01T17:58:30Z" finished-at="2021-06-01T17:58:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="handlingWindows()[pri:5, instance:testNg.TestCases2@67b92f0a]" name="handlingWindows" duration-ms="5400" started-at="2021-05-31T02:23:22Z" finished-at="2021-05-31T02:23:27Z">
+        <test-method status="SKIP" signature="handlingWindows()[pri:5, instance:testNg.TestCases2@43814d18]" name="handlingWindows" duration-ms="0" started-at="2021-06-01T17:58:30Z" finished-at="2021-06-01T17:58:30Z">
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+at testNg.TestCases2.afterMethod(TestCases2.java:547)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:455)
+at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- handlingWindows -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:testNg.TestCases2@67b92f0a]" name="afterMethod" is-config="true" duration-ms="2" started-at="2021-05-31T02:23:27Z" finished-at="2021-05-31T02:23:27Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=handlingWindows status=SUCCESS method=TestCases2.handlingWindows()[pri:5, instance:testNg.TestCases2@67b92f0a] output={null}]]]>
-              </value>
-            </param>
-          </params>
+        <test-method status="SKIP" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:testNg.TestCases2@43814d18]" name="afterMethod" is-config="true" duration-ms="0" started-at="2021-06-01T17:58:30Z" finished-at="2021-06-01T17:58:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testNg.TestCases2@67b92f0a]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2021-05-31T02:23:27Z" finished-at="2021-05-31T02:23:27Z">
+        <test-method status="SKIP" signature="beforeMethod()[pri:0, instance:testNg.TestCases2@43814d18]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2021-06-01T17:58:30Z" finished-at="2021-06-01T17:58:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="mouseOperations()[pri:7, instance:testNg.TestCases2@67b92f0a]" name="mouseOperations" duration-ms="12854" started-at="2021-05-31T02:23:27Z" finished-at="2021-05-31T02:23:40Z">
+        <test-method status="SKIP" signature="mouseOperations()[pri:7, instance:testNg.TestCases2@43814d18]" name="mouseOperations" duration-ms="0" started-at="2021-06-01T17:58:30Z" finished-at="2021-06-01T17:58:30Z">
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+at testNg.TestCases2.afterMethod(TestCases2.java:547)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:455)
+at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- mouseOperations -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:testNg.TestCases2@67b92f0a]" name="afterMethod" is-config="true" duration-ms="2" started-at="2021-05-31T02:23:40Z" finished-at="2021-05-31T02:23:40Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=mouseOperations status=SUCCESS method=TestCases2.mouseOperations()[pri:7, instance:testNg.TestCases2@67b92f0a] output={null}]]]>
-              </value>
-            </param>
-          </params>
+        <test-method status="SKIP" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:testNg.TestCases2@43814d18]" name="afterMethod" is-config="true" duration-ms="0" started-at="2021-06-01T17:58:30Z" finished-at="2021-06-01T17:58:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testNg.TestCases2@67b92f0a]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2021-05-31T02:23:40Z" finished-at="2021-05-31T02:23:40Z">
+        <test-method status="SKIP" signature="beforeMethod()[pri:0, instance:testNg.TestCases2@43814d18]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2021-06-01T17:58:30Z" finished-at="2021-06-01T17:58:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="FileUpload()[pri:8, instance:testNg.TestCases2@67b92f0a]" name="FileUpload" duration-ms="12545" started-at="2021-05-31T02:23:40Z" finished-at="2021-05-31T02:23:53Z">
+        <test-method status="SKIP" signature="FileUpload()[pri:8, instance:testNg.TestCases2@43814d18]" name="FileUpload" duration-ms="0" started-at="2021-06-01T17:58:30Z" finished-at="2021-06-01T17:58:30Z">
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+at testNg.TestCases2.afterMethod(TestCases2.java:547)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:59)
+at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:455)
+at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:222)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- FileUpload -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:testNg.TestCases2@67b92f0a]" name="afterMethod" is-config="true" duration-ms="4" started-at="2021-05-31T02:23:53Z" finished-at="2021-05-31T02:23:53Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=FileUpload status=SUCCESS method=TestCases2.FileUpload()[pri:8, instance:testNg.TestCases2@67b92f0a] output={null}]]]>
-              </value>
-            </param>
-          </params>
+        <test-method status="SKIP" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:testNg.TestCases2@43814d18]" name="afterMethod" is-config="true" duration-ms="0" started-at="2021-06-01T17:58:30Z" finished-at="2021-06-01T17:58:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:testNg.TestCases2@67b92f0a]" name="afterClass" is-config="true" duration-ms="3" started-at="2021-05-31T02:23:53Z" finished-at="2021-05-31T02:23:53Z">
+        <test-method status="SKIP" signature="afterClass()[pri:0, instance:testNg.TestCases2@43814d18]" name="afterClass" is-config="true" duration-ms="0" started-at="2021-06-01T17:58:30Z" finished-at="2021-06-01T17:58:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-        <test-method status="PASS" signature="afterTest()[pri:0, instance:testNg.TestCases2@67b92f0a]" name="afterTest" is-config="true" duration-ms="1161" started-at="2021-05-31T02:23:53Z" finished-at="2021-05-31T02:23:54Z">
+        <test-method status="SKIP" signature="afterTest()[pri:0, instance:testNg.TestCases2@43814d18]" name="afterTest" is-config="true" duration-ms="0" started-at="2021-06-01T17:58:30Z" finished-at="2021-06-01T17:58:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:testNg.TestCases2@67b92f0a]" name="afterSuite" is-config="true" duration-ms="1152" started-at="2021-05-31T02:23:54Z" finished-at="2021-05-31T02:23:55Z">
+        <test-method status="SKIP" signature="afterSuite()[pri:0, instance:testNg.TestCases2@43814d18]" name="afterSuite" is-config="true" duration-ms="0" started-at="2021-06-01T17:58:30Z" finished-at="2021-06-01T17:58:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->

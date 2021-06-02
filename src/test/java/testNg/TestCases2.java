@@ -38,6 +38,7 @@ import java.util.function.Function;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.Alert;
@@ -52,6 +53,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -380,8 +382,9 @@ public class TestCases2 extends lib {
 		lib.navigateToUrl("AutomationRegister", driver);
 		lib.waitForPageToLoad(driver);
 		try {
-			FileInputStream objFileInput = new FileInputStream(
-					new File(System.getProperty("user.dir") + "//src/test//ressources//AutomationDemoSite.xlsx"));
+			File objFile= new File(System.getProperty("user.dir") + "//src/test//ressources//AutomationDemoSite.xlsx");
+			FileInputStream objFileInput = new FileInputStream(objFile);
+					
 			System.out.println("objFileFileInputStream: " + objFileInput);
 			XSSFWorkbook objXSSFWorkbook = new XSSFWorkbook(objFileInput);
 			XSSFSheet objXSSFSheet = objXSSFWorkbook.getSheet("TestData");
@@ -390,6 +393,13 @@ public class TestCases2 extends lib {
 			for (int rowNumber = 1; rowNumber <= RowsCount; rowNumber++) {
 				readTestData(rowNumber, objXSSFSheet);
 				if (hm.get("RunMode").equals("Yes")) {
+					
+					if (rowNumber>1){
+						boolean closeiconLanguage = driver.findElement(By.xpath("//span[@class='ui-icon ui-icon-close']")).isDisplayed();
+						if(closeiconLanguage==true){
+							driver.findElement(By.xpath("//span[@class='ui-icon ui-icon-close']")).click();
+						}
+					}
 					
 					driver.findElement(By.xpath("(//input[@type='text'])[1]")).clear();
 					driver.findElement(By.xpath("(//input[@type='text'])[1]")).sendKeys(hm.get("FirstName"));
@@ -423,11 +433,25 @@ public class TestCases2 extends lib {
 						driver.findElement(By.xpath("//input[@value='Hockey']")).click();
 					}
 					
+					
 					SelectValueFromDropdown(driver,"//div[@id='msdd']","//div[@id='msdd']/following-sibling::div/ul/li",hm.get("Languages"));
+					
 					driver.findElement(By.xpath("//input[@id='secondpassword']")).click();
 					SelectValueFromDropdown(driver,"//select[@id='Skills']",hm.get("Skills"));
 					SelectValueFromDropdown(driver,"//select[@id='countries']",hm.get("Country"));
-					SelectValueFromDropdown(driver,"//span[@id='select2-country-container']/..",hm.get("SelectCountry"));
+					
+					
+					
+					boolean selectcountry = driver.findElement(By.xpath("//span[@id='select2-country-container']/..")).isEnabled();
+					if(selectcountry==true){
+						WebElement ele= driver.findElement(By.xpath("//span[@id='select2-country-container']/.."));
+						WebDriverWait wait = new WebDriverWait(driver,90);
+						wait.until(ExpectedConditions.elementToBeClickable(ele));
+						ele.click();
+						driver.findElement(By.xpath("//input[@class='select2-search__field']")).sendKeys(hm.get("SelectCountry"));
+					}
+					
+					
 					SelectValueFromDropdown(driver,"//select[@id='yearbox']",hm.get("DOB_YY"));
 					SelectValueFromDropdown(driver,"//select[@type='text' and @placeholder='Month']",hm.get("DOB_MM"));
 					SelectValueFromDropdown(driver,"//*[@id='daybox']",hm.get("DOB_DD"));
@@ -438,22 +462,11 @@ public class TestCases2 extends lib {
 					driver.findElement(By.xpath("//input[@id='secondpassword']")).clear();
 					driver.findElement(By.xpath("//input[@id='secondpassword']")).sendKeys(hm.get("ConfirmPassword"));
 					
-					
-					/*SelectValueFromDropdown(driver, objectRepository.customerCardType, hm.get("Skills"));
-					lib.findElement(driver, objectRepository.customerCardNumber).clear();
-					lib.findElement(driver, objectRepository.customerCardNumber).sendKeys(hm.get("SelectCountry"));
-					lib.findElement(driver, objectRepository.customerCardDate).clear();
-					lib.findElement(driver, objectRepository.customerCardDate).sendKeys(hm.get("DOB_YY"));
-					lib.findElement(driver, objectRepository.customerCardDate).sendKeys(hm.get("DOB_MM"));
-					
-					lib.findElement(driver, objectRepository.customerCardDate).sendKeys(hm.get("DOB_DD"));
-					lib.findElement(driver, objectRepository.customerCardDate).sendKeys(hm.get("Password"));
-					lib.findElement(driver, objectRepository.customerCardDate).sendKeys(hm.get("confirmPassword"));
-					
 					FileOutputStream objfileoutput = new FileOutputStream(objFile);
-					uploadTheResultToExcel(objXSSFWorkbook,rowNumber);
+					
+					WriteTheResultToExcel(objXSSFWorkbook,rowNumber);
 					objXSSFWorkbook.write(objfileoutput);
-					objfileoutput.close();*/
+					objfileoutput.close();
 				} else {
 					System.out.println("RunMode is not marked as Yes for row number " + rowNumber);
 				}
@@ -467,6 +480,18 @@ public class TestCases2 extends lib {
 	
 	// helper methods
 	
+	private void WriteTheResultToExcel(XSSFWorkbook objXSSFWorkbook, int rowNumber) {
+		XSSFSheet objSheet=objXSSFWorkbook.getSheet("TestData");
+		XSSFCellStyle CellStyle=objXSSFWorkbook.createCellStyle();
+		//CellStyle.setBorderBottom(XSSFCellStyle.BORDER_THIN);
+		System.out.println("Row Number in excel is :"+rowNumber);
+		
+		objSheet.getRow(rowNumber).createCell(18).setCellValue("PASS");	
+		objSheet.getRow(rowNumber).getCell(18).setCellStyle(CellStyle);
+		
+		
+	}
+
 	private void readTestData(int rowNumber, XSSFSheet objXSSFSheet) {
 		DataFormatter DataFormatterObj = new DataFormatter();
 		hm.put("RunMode", objXSSFSheet.getRow(rowNumber).getCell(0).getStringCellValue());
@@ -493,7 +518,7 @@ public class TestCases2 extends lib {
 		hm.put("DOB_DD", DOB_DD);
 		
 		hm.put("Password", objXSSFSheet.getRow(rowNumber).getCell(16).getStringCellValue());
-		hm.put("confirmPassword", objXSSFSheet.getRow(rowNumber).getCell(17).getStringCellValue());
+		hm.put("ConfirmPassword", objXSSFSheet.getRow(rowNumber).getCell(17).getStringCellValue());
 
 	}
 

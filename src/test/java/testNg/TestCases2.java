@@ -27,6 +27,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
@@ -377,7 +379,7 @@ public class TestCases2 extends lib {
 		robot.keyRelease(KeyEvent.VK_ENTER);
 	}
 
-	@Test(priority=0)
+	@Test(priority=9)
 	public void DataDrivenAutomationDemoSite() throws IOException{
 		lib.navigateToUrl("AutomationRegister", driver);
 		lib.waitForPageToLoad(driver);
@@ -477,9 +479,51 @@ public class TestCases2 extends lib {
 		}
 	}
 	
+	@Test(priority=0)
+	public void brokenLinks(){
+		driver.get("https://demoqa.com/broken");
+		// driver.findElement(By.xpath("https://editor.datatables.net/examples/inline-editing/simple")).click();
+
+		// Storing the links in a list and traversing through the links
+		List<WebElement> links1 = driver.findElements(By.tagName("a"));
+
+		// This line will print the number of links and the count of links.
+		System.out.println("No of links are " + links1.size());
+
+		// checking the links fetched.
+		for (int i = 0; i < links1.size(); i++) {
+			WebElement E1 = links1.get(i);
+			String url = E1.getAttribute("href");
+			System.out.println("url from browser : "+url);
+			verifyLinks(url);
+		}
+	}
 	
 	// helper methods
 	
+	private static void verifyLinks(String linkUrl) {
+		try {
+			URL url1 = new URL(linkUrl);
+
+			// Now we will be creating url connection and getting the response
+			// code
+			HttpURLConnection httpURLConnect = (HttpURLConnection) url1.openConnection();
+			httpURLConnect.setConnectTimeout(5000);
+			httpURLConnect.connect();
+			int responsecode = httpURLConnect.getResponseCode();
+			if (responsecode >= 400) {
+				System.out.println(linkUrl + " - " + httpURLConnect.getResponseMessage() + " is a broken link");
+			}
+
+			// Fetching and Printing the response code obtained
+			else if (responsecode >= 200 && responsecode<400) {
+				System.out.println(linkUrl + " - " + httpURLConnect.getResponseMessage()+" is a valid link");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	private void WriteTheResultToExcel(XSSFWorkbook objXSSFWorkbook, int rowNumber) {
 		XSSFSheet objSheet=objXSSFWorkbook.getSheet("TestData");
 		XSSFCellStyle CellStyle=objXSSFWorkbook.createCellStyle();

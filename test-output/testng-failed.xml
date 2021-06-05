@@ -11,6 +11,7 @@
           <include name="afterTest"/>
           <include name="beforeSuite"/>
           <include name="HandlingAlerts"/>
+          <include name="brokenLinks"/>
           <include name="beforeMethod"/>
           <include name="beforeClass"/>
           <include name="afterSuite"/>

@@ -70,7 +70,7 @@ import org.testng.annotations.AfterSuite;
 public class TestCases2 extends lib {
 	HashMap<String, String> hm = new HashMap<String, String>();
 	
-	@Test(priority = 0, enabled = false)
+	@Test(priority = 0, enabled = true)
 	public void verifyGmoOnlineLoadedSuccusessfully() {
 		System.out.println("inside test1");
 		SoftAssert softAssert = new SoftAssert();
@@ -86,7 +86,7 @@ public class TestCases2 extends lib {
 		softAssert.assertAll();
 	}
 
-	@Test(priority = 1, dependsOnMethods = { "verifyGmoOnlineLoadedSuccusessfully" }, enabled = false)
+	@Test(priority = 1, dependsOnMethods = { "verifyGmoOnlineLoadedSuccusessfully" }, enabled = true)
 	public void verifyEnterGMOOnlineLoadedSuccessfully() {
 		lib.waitForPageToLoad(driver);
 		Extenttest = ExtentReport.createTest(testcaseName());
@@ -107,7 +107,7 @@ public class TestCases2 extends lib {
 
 	}
 
-	@Test(priority = 2, dependsOnMethods = { "verifyEnterGMOOnlineLoadedSuccessfully" }, enabled = false)
+	@Test(priority = 2, dependsOnMethods = { "verifyEnterGMOOnlineLoadedSuccessfully" }, enabled = true)
 	public void verifyExternalFrameBackpackOrder() {
 		lib.waitForPageToLoad(driver);
 		Extenttest = ExtentReport.createTest(testcaseName());
@@ -479,7 +479,7 @@ public class TestCases2 extends lib {
 		}
 	}
 	
-	@Test(priority=0)
+	@Test(priority=10)
 	public void brokenLinks(){
 		driver.get("https://demoqa.com/broken");
 		// driver.findElement(By.xpath("https://editor.datatables.net/examples/inline-editing/simple")).click();
@@ -626,7 +626,7 @@ public class TestCases2 extends lib {
 	}
 
 	@BeforeClass
-	public void beforeClass() {
+	public void beforeClass() throws AWTException, InterruptedException {
 		System.out.println("inside beforeClass");
 		lib.launchBrowser();
 	}

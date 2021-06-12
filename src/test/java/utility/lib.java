@@ -1,5 +1,8 @@
 package utility;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -76,7 +80,7 @@ public class lib {
 		ExtentReport.setSystemInfo("Browser", property.getProperty("browser"));
 	}
 
-	public static void launchBrowser() {
+	public static void launchBrowser() throws AWTException, InterruptedException {
 		if (property.getProperty("browser").equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
@@ -94,7 +98,7 @@ public class lib {
 			driver = new OperaDriver();
 		}
 		driver.manage().window().maximize();// it maximizes our browser
-		// global waiting mechanism .To tell webdriver to wait for all
+		// global waiting mechanism .To tell web driver to wait for all
 		// webelements that
 		// is declared below the this statement
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -103,10 +107,56 @@ public class lib {
 			System.out.println(property.getProperty("GmoOnloneURL_SIT"));
 			driver.get(property.getProperty("GmoOnloneURL_SIT"));
 			waitForPageToLoad(driver);
+			boolean flag = driver.findElement(By.xpath("//*[@id='primary-button']")).isDisplayed();
+			if (flag == true) {
+				
+				Robot robot = new Robot();
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_ENTER);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_ENTER);
+				robot.keyRelease(KeyEvent.VK_ENTER);
+				/*driver.findElement(By.xpath("//*[@id=details-button']")).click();
+				driver.findElement(By.xpath("//*[@id='proceed-link']")).click();
+				waitForPageToLoad(driver);*/
+			}
 		} else if (property.getProperty("environment").equalsIgnoreCase("UAT")) {
 			System.out.println(property.getProperty("GmoOnloneURL_UAT"));
 			driver.get(property.getProperty("GmoOnloneURL_UAT"));
 			waitForPageToLoad(driver);
+			boolean flag = driver.findElement(By.xpath("//*[@id='primary-button']")).isDisplayed();
+			if (flag == true) {
+				Robot robot = new Robot();
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_ENTER);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_TAB);
+				robot.keyRelease(KeyEvent.VK_TAB);
+				robot.keyPress(KeyEvent.VK_ENTER);
+				robot.keyRelease(KeyEvent.VK_ENTER);
+				/*WebElement ele=driver.findElement(By.xpath("//*[@id='primary-button']"));
+				ele.sendKeys(Keys.TAB);
+				Thread.sleep(2000);
+				ele.sendKeys(Keys.TAB);
+				ele.sendKeys(Keys.ENTER)*/;
+				/*driver.findElement(By.xpath("//*[@id=details-button']")).click();
+				driver.findElement(By.xpath("//*[@id='proceed-link']")).click();
+				waitForPageToLoad(driver);*/
+			}
 		}
 
 	}

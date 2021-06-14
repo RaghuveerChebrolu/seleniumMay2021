@@ -27,6 +27,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -119,6 +120,7 @@ public class lib {
 				robot.keyRelease(KeyEvent.VK_TAB);
 				robot.keyPress(KeyEvent.VK_TAB);
 				robot.keyPress(KeyEvent.VK_ENTER);
+				robot.keyRelease(KeyEvent.VK_ENTER);
 				robot.keyRelease(KeyEvent.VK_TAB);
 				robot.keyPress(KeyEvent.VK_TAB);
 				robot.keyRelease(KeyEvent.VK_TAB);
@@ -143,6 +145,7 @@ public class lib {
 				robot.keyRelease(KeyEvent.VK_TAB);
 				robot.keyPress(KeyEvent.VK_TAB);
 				robot.keyPress(KeyEvent.VK_ENTER);
+				robot.keyRelease(KeyEvent.VK_ENTER);
 				robot.keyRelease(KeyEvent.VK_TAB);
 				robot.keyPress(KeyEvent.VK_TAB);
 				robot.keyRelease(KeyEvent.VK_TAB);
@@ -224,7 +227,7 @@ public class lib {
 		objselect.selectByVisibleText(dropdownvalue);
 
 	}
-
+	
 	protected static void SelectValueFromDropdown(WebDriver driver, String xpath, String xpath2, String dropdownvalue) {
 		driver.findElement(By.xpath(xpath)).click();
 		List<WebElement> AllValues = driver.findElements(By.xpath(xpath2));
@@ -237,5 +240,74 @@ public class lib {
 			}
 		}
 	}
+
+	public static WebElement findElement(WebDriver driver, String Identifier) {
+		WebElement element = null;
+		WebDriverWait wait1 = new WebDriverWait(driver, 90);
+
+		By search = null;
+		// System.out.println("Identifier : "+Identifier);
+		String locator = Identifier.split("&")[0].trim();
+		String description = Identifier.split("&")[1].trim();
+		if (locator.equals("id")) {
+			search = By.id(description);
+		} else if (locator.equals("name")) {
+			search = By.name(description);
+		} else if (locator.equals("classname")) {
+			search = By.className(description);
+		} else if (locator.equals("linktext")) {
+			search = By.linkText(description);
+		} else if (locator.equals("partiallinktext")) {
+			search = By.partialLinkText(description);
+		} else if (locator.equals("xpath")) {
+			search = By.xpath(description);
+		} else if (locator.equals("tagname")) {
+			search = By.tagName(description);
+		} else if (locator.equals("css")) {
+			search = By.cssSelector(description);
+		}
+		System.out.println("locator : " + locator);
+		System.out.println("description : " + description);
+		// return element;
+		// element=driver.findElement(search);
+		wait1.until(ExpectedConditions.elementToBeClickable(search));
+		return driver.findElement(search);
+
+	}
+	
+	public static List<WebElement> findElements(WebDriver driver, String Identifier) {
+		WebElement element = null;
+		WebDriverWait wait1 = new WebDriverWait(driver, 90);
+
+		By search = null;
+		// System.out.println("Identifier : "+Identifier);
+		String locator = Identifier.split("&")[0].trim();
+		String description = Identifier.split("&")[1].trim();
+		if (locator.equals("id")) {
+			search = By.id(description);
+		} else if (locator.equals("name")) {
+			search = By.name(description);
+		} else if (locator.equals("classname")) {
+			search = By.className(description);
+		} else if (locator.equals("linktext")) {
+			search = By.linkText(description);
+		} else if (locator.equals("partiallinktext")) {
+			search = By.partialLinkText(description);
+		} else if (locator.equals("xpath")) {
+			search = By.xpath(description);
+		} else if (locator.equals("tagname")) {
+			search = By.tagName(description);
+		} else if (locator.equals("css")) {
+			search = By.cssSelector(description);
+		}
+		System.out.println("locator : " + locator);
+		System.out.println("description : " + description);
+		// return element;
+		// element=driver.findElement(search);
+		wait1.until(ExpectedConditions.elementToBeClickable(search));
+		return driver.findElements(search);	
+
+	}
+	
 
 }

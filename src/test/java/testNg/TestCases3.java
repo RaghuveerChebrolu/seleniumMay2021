@@ -335,7 +335,7 @@ public class TestCases3 extends lib {
 
 	}
 
-	@Test(priority = 8)
+	@Test(priority = 10)
 	public void FileUpload() throws AWTException, InterruptedException {
 		Extenttest = ExtentReport.createTest(testcaseName());
 		lib.navigateToUrl("FileUpload", driver);
@@ -380,7 +380,8 @@ public class TestCases3 extends lib {
 	}
 
 	@Test(priority=9)
-	public void DataDrivenAutomationDemoSite() throws IOException{
+	public void DataDrivenAutomationDemoSite() throws Exception{
+		Extenttest = ExtentReport.createTest(testcaseName());
 		lib.navigateToUrl("AutomationRegister", driver);
 		lib.waitForPageToLoad(driver);
 		try {
@@ -397,72 +398,77 @@ public class TestCases3 extends lib {
 				if (hm.get("RunMode").equals("Yes")) {
 					
 					if (rowNumber>1){
-						boolean closeiconLanguage = driver.findElement(By.xpath("//span[@class='ui-icon ui-icon-close']")).isDisplayed();
+						boolean closeiconLanguage = lib.findElement(driver, ObjectRepository.AutoamtionRegistercloseIcon).isDisplayed();
 						if(closeiconLanguage==true){
-							driver.findElement(By.xpath("//span[@class='ui-icon ui-icon-close']")).click();
+							lib.findElement(driver, ObjectRepository.AutoamtionRegistercloseIcon).click();
 						}
 					}
 					
-					driver.findElement(By.xpath("(//input[@type='text'])[1]")).clear();
-					driver.findElement(By.xpath("(//input[@type='text'])[1]")).sendKeys(hm.get("FirstName"));
+					//driver.findElement(By.xpath("(//input[@type='text'])[1]")).clear();
+					//driver.findElement(By.xpath("(//input[@type='text'])[1]")).sendKeys(hm.get("FirstName"));
 					
-					driver.findElement(By.xpath("(//input[@type='text'])[2]")).clear();
-					driver.findElement(By.xpath("(//input[@type='text'])[2]")).sendKeys(hm.get("LastName"));
+					lib.findElement(driver, ObjectRepository.AutoamtionRegisterFirstName).clear();
+					lib.findElement(driver, ObjectRepository.AutoamtionRegisterFirstName).sendKeys(hm.get("FirstName"));
 					
-					driver.findElement(By.xpath("//textarea[@rows='3']")).clear();
-					driver.findElement(By.xpath("//textarea[@rows='3']")).sendKeys(hm.get("Address"));
+					lib.findElement(driver, ObjectRepository.AutoamtionRegisterLastName).clear();
+					lib.findElement(driver, ObjectRepository.AutoamtionRegisterLastName).sendKeys(hm.get("LastName"));
 					
-					driver.findElement(By.xpath("//input[@type='email']")).clear();
-					driver.findElement(By.xpath("//input[@type='email']")).sendKeys(hm.get("EmailAddress"));
+					lib.findElement(driver, ObjectRepository.AutoamtionRegisterAddress).clear();
+					lib.findElement(driver, ObjectRepository.AutoamtionRegisterAddress).sendKeys(hm.get("Address"));
+					
+					lib.findElement(driver, ObjectRepository.AutoamtionRegisteremail).clear();
+					lib.findElement(driver, ObjectRepository.AutoamtionRegisteremail).sendKeys(hm.get("EmailAddress"));
 					
 					
-					driver.findElement(By.xpath("//input[@type='tel']")).clear();
-					driver.findElement(By.xpath("//input[@type='tel']")).sendKeys(hm.get("PhoneNumber"));
+					lib.findElement(driver, ObjectRepository.AutoamtionRegisterphonenumber).clear();
+					lib.findElement(driver, ObjectRepository.AutoamtionRegisterphonenumber).sendKeys(hm.get("PhoneNumber"));
 					
 					if(hm.get("Gender").equalsIgnoreCase("Male")){
 						
-						driver.findElement(By.xpath("(//input[@name='radiooptions'])[1]")).click();
+						lib.findElement(driver, ObjectRepository.AutoamtionRegisterGenderMale).click();
 					}else if(hm.get("Gender").equalsIgnoreCase("female")){
 						
-						driver.findElement(By.xpath("(//input[@name='radiooptions'])[2]")).click();
+						lib.findElement(driver, ObjectRepository.AutoamtionRegisterGenderFemale).click();
 					}
 					
 					if(hm.get("Hobbies").equalsIgnoreCase("cricket")){
-						driver.findElement(By.xpath("//input[@value='Cricket']")).click();
+						lib.findElement(driver, ObjectRepository.AutoamtionRegisterHobbiesCricket).click();
 					}else if(hm.get("Hobbies").equalsIgnoreCase("movies")){
-						driver.findElement(By.xpath("//input[@value='Movies']")).click();
+						lib.findElement(driver, ObjectRepository.AutoamtionRegisterHobbiesMovies).click();
 					}else if(hm.get("Hobbies").equalsIgnoreCase("hockey")){
-						driver.findElement(By.xpath("//input[@value='Hockey']")).click();
+						lib.findElement(driver, ObjectRepository.AutoamtionRegisterHobbiesHockey).click();
 					}
+					String Langdropdown = ObjectRepository.AutoamtionRegisterLangDrpDwn;
+					System.out.println(Langdropdown);
+					String LangdrpdwnValue= ObjectRepository.AutoamtionRegisterlanguagevalue;
+					System.out.println(LangdrpdwnValue);
+					SelectValueFromDropdown(driver,Langdropdown,LangdrpdwnValue,hm.get("Languages"));
+					
+					lib.findElement(driver, ObjectRepository.AutoamtionRegisterLastName).click();
+					SelectValueFromDropdown(driver,ObjectRepository.AutoamtionRegisterskills,hm.get("Skills"));
+					SelectValueFromDropdown(driver,ObjectRepository.AutoamtionRegisterCountry,hm.get("Country"));
 					
 					
-					SelectValueFromDropdown(driver,"//div[@id='msdd']","//div[@id='msdd']/following-sibling::div/ul/li",hm.get("Languages"));
 					
-					driver.findElement(By.xpath("//input[@id='secondpassword']")).click();
-					SelectValueFromDropdown(driver,"//select[@id='Skills']",hm.get("Skills"));
-					SelectValueFromDropdown(driver,"//select[@id='countries']",hm.get("Country"));
-					
-					
-					
-					boolean selectcountry = driver.findElement(By.xpath("//span[@id='select2-country-container']/..")).isEnabled();
+					boolean selectcountry = lib.findElement(driver, ObjectRepository.AutoamtionRegisterselectCountry).isEnabled();
 					if(selectcountry==true){
-						WebElement ele= driver.findElement(By.xpath("//span[@id='select2-country-container']/.."));
+						WebElement ele= lib.findElement(driver, ObjectRepository.AutoamtionRegisterselectCountry);
 						WebDriverWait wait = new WebDriverWait(driver,90);
 						wait.until(ExpectedConditions.elementToBeClickable(ele));
 						ele.click();
-						driver.findElement(By.xpath("//input[@class='select2-search__field']")).sendKeys(hm.get("SelectCountry"));
+						lib.findElement(driver, ObjectRepository.AutoamtionRegisterselectcountryTextbox).sendKeys(hm.get("SelectCountry"));
 					}
 					
 					
-					SelectValueFromDropdown(driver,"//select[@id='yearbox']",hm.get("DOB_YY"));
-					SelectValueFromDropdown(driver,"//select[@type='text' and @placeholder='Month']",hm.get("DOB_MM"));
-					SelectValueFromDropdown(driver,"//*[@id='daybox']",hm.get("DOB_DD"));
+					SelectValueFromDropdown(driver,ObjectRepository.AutoamtionRegisterDOBYY,hm.get("DOB_YY"));
+					SelectValueFromDropdown(driver,ObjectRepository.AutoamtionRegisterDOBMM,hm.get("DOB_MM"));
+					SelectValueFromDropdown(driver,ObjectRepository.AutoamtionRegisterDOBDD,hm.get("DOB_DD"));
 					
-					driver.findElement(By.xpath("//input[@id='firstpassword']")).clear();
-					driver.findElement(By.xpath("//input[@id='firstpassword']")).sendKeys(hm.get("Password"));
+					lib.findElement(driver, ObjectRepository.AutoamtionRegisterfirstpassword).clear();
+					lib.findElement(driver, ObjectRepository.AutoamtionRegisterfirstpassword).sendKeys(hm.get("Password"));
 					
-					driver.findElement(By.xpath("//input[@id='secondpassword']")).clear();
-					driver.findElement(By.xpath("//input[@id='secondpassword']")).sendKeys(hm.get("ConfirmPassword"));
+					lib.findElement(driver, ObjectRepository.AutoamtionRegistersecondpassword).clear();
+					lib.findElement(driver, ObjectRepository.AutoamtionRegistersecondpassword).sendKeys(hm.get("ConfirmPassword"));
 					
 					FileOutputStream objfileoutput = new FileOutputStream(objFile);
 					
@@ -473,14 +479,15 @@ public class TestCases3 extends lib {
 					System.out.println("RunMode is not marked as Yes for row number " + rowNumber);
 				}
 			}
-		} catch (FileNotFoundException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	@Test(priority=10)
+	@Test(priority=8)
 	public void brokenLinks(){
+		Extenttest = ExtentReport.createTest(testcaseName());
 		driver.get("https://demoqa.com/broken");
 		// driver.findElement(By.xpath("https://editor.datatables.net/examples/inline-editing/simple")).click();
 

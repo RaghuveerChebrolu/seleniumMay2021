@@ -36,9 +36,35 @@ public class ObjectRepository {
 	public static final String draggable=constants.ID+"&"+"draggable";
 	public static final String droppable=constants.ID+"&"+"droppable";
 	
-	public static final String fileUpload=constants.XPATH+"&"+"//input[@id='input-4']";
+	public static final String fileUpload=constants.XPATH+"&"+"//input[@id='input-4']/preceding-sibling::span";
 	
 	public static final String brokenlinks=constants.TAGNAME+"&"+"a";
+	
+	public static final String AutoamtionRegistercloseIcon=constants.XPATH+"&"+"//span[@class='ui-icon ui-icon-close']";
+	public static final String AutoamtionRegisterFirstName=constants.XPATH+"&"+"(//input[@type='text'])[1]";
+	public static final String AutoamtionRegisterLastName=constants.XPATH+"&"+"(//input[@type='text'])[2]";
+	
+	public static final String AutoamtionRegisterAddress=constants.XPATH+"&"+"//textarea[@rows='3']";
+	public static final String AutoamtionRegisteremail=constants.XPATH+"&"+"//input[@type='email']";
+	public static final String AutoamtionRegisterphonenumber=constants.XPATH+"&"+"//input[@type='tel']";
+	public static final String AutoamtionRegisterGenderMale=constants.XPATH+"&"+"(//input[@name='radiooptions'])[1]";
+	public static final String AutoamtionRegisterGenderFemale=constants.XPATH+"&"+"(//input[@name='radiooptions'])[2]";
+	public static final String AutoamtionRegisterHobbiesCricket=constants.XPATH+"&"+"//input[@value='Cricket']";
+	public static final String AutoamtionRegisterHobbiesMovies=constants.XPATH+"&"+"//input[@value='Movies']";
+	public static final String AutoamtionRegisterHobbiesHockey=constants.XPATH+"&"+"//input[@value='Hockey']";
+	public static final String AutoamtionRegisterLangDrpDwn=constants.XPATH+"&"+"//div[@id='msdd']";
+	public static final String AutoamtionRegisterlanguagevalue=constants.XPATH+"&"+"//div[@id='msdd']/following-sibling::div/ul/li";
+	public static final String AutoamtionRegisterskills=constants.XPATH+"&"+"//select[@id='Skills']";
+	public static final String AutoamtionRegisterCountry=constants.XPATH+"&"+"//select[@id='countries']";
+	public static final String AutoamtionRegisterselectCountry=constants.XPATH+"&"+"//span[@id='select2-country-container']/..";
+	public static final String AutoamtionRegisterselectcountryTextbox=constants.XPATH+"&"+"//input[@class='select2-search__field']";
+	public static final String AutoamtionRegisterDOBYY=constants.XPATH+"&"+"//select[@id='yearbox']";
+	public static final String AutoamtionRegisterDOBMM=constants.XPATH+"&"+"//select[@type='text' and @placeholder='Month']";
+	public static final String AutoamtionRegisterDOBDD=constants.XPATH+"&"+"//*[@id='daybox']";
+	public static final String AutoamtionRegisterfirstpassword=constants.XPATH+"&"+"//input[@id='firstpassword']";
+	public static final String AutoamtionRegistersecondpassword=constants.XPATH+"&"+"//input[@id='secondpassword']";
+	
+	
 	
 	
 	

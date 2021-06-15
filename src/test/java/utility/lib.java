@@ -220,15 +220,34 @@ public class lib {
 	}
 
 	protected static void SelectValueFromDropdown(WebDriver driver, String xpath, String dropdownvalue) {
-
-		WebElement objweb = driver.findElement(By.xpath(xpath));
+		String locator = xpath.split("&")[0].trim();
+		String description = xpath.split("&")[1].trim();
+		By search = null;
+		if (locator.equals("id")) {
+			search = By.id(description);
+		} else if (locator.equals("name")) {
+			search = By.name(description);
+		} else if (locator.equals("classname")) {
+			search = By.className(description);
+		} else if (locator.equals("linktext")) {
+			search = By.linkText(description);
+		} else if (locator.equals("partiallinktext")) {
+			search = By.partialLinkText(description);
+		} else if (locator.equals("xpath")) {
+			search = By.xpath(description);
+		} else if (locator.equals("tagname")) {
+			search = By.tagName(description);
+		} else if (locator.equals("css")) {
+			search = By.cssSelector(description);
+		}
+		WebElement objweb = driver.findElement(search);
 		objweb.click();
 		Select objselect = new Select(objweb);
 		objselect.selectByVisibleText(dropdownvalue);
 
 	}
 	
-	protected static void SelectValueFromDropdown(WebDriver driver, String xpath, String xpath2, String dropdownvalue) {
+	/*protected static void SelectValueFromDropdown(WebDriver driver, String xpath, String xpath2, String dropdownvalue) {
 		driver.findElement(By.xpath(xpath)).click();
 		List<WebElement> AllValues = driver.findElements(By.xpath(xpath2));
 		System.out.println(AllValues.size());
@@ -239,8 +258,61 @@ public class lib {
 				AllValues.get(i).click();
 			}
 		}
-	}
+	}*/
 
+	protected static void SelectValueFromDropdown(WebDriver driver, String xpath, String xpath2, String dropdownvalue) {
+		String locator = xpath.split("&")[0].trim();
+		String description = xpath.split("&")[1].trim();
+		By search = null;
+		if (locator.equals("id")) {
+			search = By.id(description);
+		} else if (locator.equals("name")) {
+			search = By.name(description);
+		} else if (locator.equals("classname")) {
+			search = By.className(description);
+		} else if (locator.equals("linktext")) {
+			search = By.linkText(description);
+		} else if (locator.equals("partiallinktext")) {
+			search = By.partialLinkText(description);
+		} else if (locator.equals("xpath")) {
+			search = By.xpath(description);
+		} else if (locator.equals("tagname")) {
+			search = By.tagName(description);
+		} else if (locator.equals("css")) {
+			search = By.cssSelector(description);
+		}
+		driver.findElement(search).click();
+		String locator1 = xpath.split("&")[0].trim();
+		String description1 = xpath.split("&")[1].trim();
+		By search1 = null;
+		if (locator.equals("id")) {
+			search1 = By.id(description1);
+		} else if (locator.equals("name")) {
+			search1 = By.name(description1);
+		} else if (locator.equals("classname")) {
+			search1 = By.className(description1);
+		} else if (locator.equals("linktext")) {
+			search1 = By.linkText(description1);
+		} else if (locator.equals("partiallinktext")) {
+			search1 = By.partialLinkText(description1);
+		} else if (locator.equals("xpath")) {
+			search1 = By.xpath(description1);
+		} else if (locator.equals("tagname")) {
+			search1 = By.tagName(description1);
+		} else if (locator.equals("css")) {
+			search1 = By.cssSelector(description1);
+		}
+		List<WebElement> AllValues = driver.findElements(search1);
+		System.out.println(AllValues.size());
+		for (int i = 0; i < AllValues.size(); i++) {
+			String language = AllValues.get(i).getText();
+			System.out.println(language);
+			if (language.equals(dropdownvalue)) {
+				AllValues.get(i).click();
+			}
+		}
+	}
+	
 	public static WebElement findElement(WebDriver driver, String Identifier) {
 		WebElement element = null;
 		WebDriverWait wait1 = new WebDriverWait(driver, 90);

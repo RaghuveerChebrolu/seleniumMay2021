@@ -282,8 +282,8 @@ public class lib {
 			search = By.cssSelector(description);
 		}
 		driver.findElement(search).click();
-		String locator1 = xpath.split("&")[0].trim();
-		String description1 = xpath.split("&")[1].trim();
+		String locator1 = xpath2.split("&")[0].trim();
+		String description1 = xpath2.split("&")[1].trim();
 		By search1 = null;
 		if (locator.equals("id")) {
 			search1 = By.id(description1);

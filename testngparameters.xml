@@ -3,11 +3,11 @@
 <suite name="Suite">
 <parameter name="BrowserName" value="firefox"/>
 <test name="Parameters Testing">
-		<!-- <parameter name="BrowserName" value="chrome"/> -->
+		<parameter name="BrowserName" value="chrome"/>
 		<parameter name="UserName" value="demo"/>
 		<parameter name="Passcode" value="PASSWORD"/>
 		<classes>
-			<class name="com.SeleniumTopics.TestNg.TestngParamters" />
+			<class name="testNg.TestngParamters" />
 		</classes>
 	</test>
 </suite> <!-- Suite -->

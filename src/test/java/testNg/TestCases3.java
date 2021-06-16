@@ -71,12 +71,12 @@ import org.testng.annotations.AfterSuite;
 
 public class TestCases3 extends lib {
 	HashMap<String, String> hm = new HashMap<String, String>();
-	
+
 	@Test(priority = 0, enabled = true)
 	public void verifyGmoOnlineLoadedSuccusessfully() {
 		System.out.println("inside test1");
 		SoftAssert softAssert = new SoftAssert();
-		Extenttest = ExtentReport.createTest(testcaseName());
+		Extenttest = ExtentReport.createTest(new Object() {}.getClass().getEnclosingMethod().getName());
 		String ActualTitle = lib.findElement(driver, ObjectRepository.GMOonlineTitle).getText();
 		System.out.println("tile of gmo online " + ActualTitle);
 		String expectedTitle = "GMO OnLine";
@@ -91,7 +91,7 @@ public class TestCases3 extends lib {
 	@Test(priority = 1, dependsOnMethods = { "verifyGmoOnlineLoadedSuccusessfully" }, enabled = true)
 	public void verifyEnterGMOOnlineLoadedSuccessfully() {
 		lib.waitForPageToLoad(driver);
-		Extenttest = ExtentReport.createTest(testcaseName());
+		Extenttest = ExtentReport.createTest(new Object() {}.getClass().getEnclosingMethod().getName());
 		WebElement ele = lib.findElement(driver, ObjectRepository.submitEnterGmoOnline);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView()", ele);
@@ -112,7 +112,7 @@ public class TestCases3 extends lib {
 	@Test(priority = 2, dependsOnMethods = { "verifyEnterGMOOnlineLoadedSuccessfully" }, enabled = true)
 	public void verifyExternalFrameBackpackOrder() {
 		lib.waitForPageToLoad(driver);
-		Extenttest = ExtentReport.createTest(testcaseName());
+		Extenttest = ExtentReport.createTest(new Object() {}.getClass().getEnclosingMethod().getName());
 		try {
 			lib.findElement(driver, ObjectRepository.QTY_BACKPACKS).sendKeys(constants.orderQnty);
 		} catch (Exception e) {
@@ -131,16 +131,16 @@ public class TestCases3 extends lib {
 			element.click();
 			e.printStackTrace();
 		}
-		Boolean PlaceAnOrderAcutal = lib.findElement(driver,ObjectRepository.PlaceAnOrder).isEnabled();
+		Boolean PlaceAnOrderAcutal = lib.findElement(driver, ObjectRepository.PlaceAnOrder).isEnabled();
 		Boolean PlaceAnOrderExpected = true;
 		Assert.assertEquals(PlaceAnOrderAcutal, PlaceAnOrderExpected);
-		lib.findElement(driver,ObjectRepository.PlaceAnOrder).click();
+		lib.findElement(driver, ObjectRepository.PlaceAnOrder).click();
 
-		Boolean ProceedWithOrderActual = lib.findElement(driver,ObjectRepository.PlaceAnOrder).isEnabled();
+		Boolean ProceedWithOrderActual = lib.findElement(driver, ObjectRepository.PlaceAnOrder).isEnabled();
 		Boolean ProceedWithOrderExpected = true;
 		Assert.assertEquals(ProceedWithOrderActual, ProceedWithOrderExpected);
-		String ExternalFrameBackpackOrderUnitPrice = lib.findElement(driver, ObjectRepository.ExternalFrameBackpackOrderUnitprice)
-				.getText();
+		String ExternalFrameBackpackOrderUnitPrice = lib
+				.findElement(driver, ObjectRepository.ExternalFrameBackpackOrderUnitprice).getText();
 		System.out.println(ExternalFrameBackpackOrderUnitPrice);
 		String value = ExternalFrameBackpackOrderUnitPrice.substring(2);
 		System.out.println("value: " + value);
@@ -149,8 +149,8 @@ public class TestCases3 extends lib {
 		float ExpectedTotalPrice = Unitprice * Integer.parseInt(constants.orderQnty);
 		System.out.println("ExpectedTotalPrice:" + ExpectedTotalPrice);
 		String Expected = Float.toString(ExpectedTotalPrice);
-		
-		String AutalTotalPrice  = lib.findElement(driver, ObjectRepository.AutalTotalPrice).getText();
+
+		String AutalTotalPrice = lib.findElement(driver, ObjectRepository.AutalTotalPrice).getText();
 		System.out.println("AutalTotalPrice from script: " + AutalTotalPrice);
 		float AutalTotalPricefromScript = Float.parseFloat(AutalTotalPrice.substring(2));
 		String Actual = Float.toString(AutalTotalPricefromScript);
@@ -161,7 +161,7 @@ public class TestCases3 extends lib {
 
 	@Test(priority = 3)
 	public void HandlingAlerts() {
-		Extenttest = ExtentReport.createTest(testcaseName());
+		Extenttest = ExtentReport.createTest(new Object() {}.getClass().getEnclosingMethod().getName());
 		/*
 		 * driver.navigate().back(); System.out.println(
 		 * "Inside test case HandlingAlerts");
@@ -191,14 +191,14 @@ public class TestCases3 extends lib {
 
 	@Test(priority = 4)
 	public void HandlingFrames() {
-		Extenttest = ExtentReport.createTest(testcaseName());
+		Extenttest = ExtentReport.createTest(new Object() {}.getClass().getEnclosingMethod().getName());
 		lib.navigateToUrl("FramesURL", driver);
 		lib.waitForPageToLoad(driver);
 		lib.findElement(driver, ObjectRepository.singleFrame).click();
 		driver.switchTo().frame("SingleFrame");
 		lib.findElement(driver, ObjectRepository.singleframeTextbox).sendKeys("hello");
 		driver.switchTo().defaultContent();
-		lib.findElement(driver,ObjectRepository.frameWithInFrame ).click();
+		lib.findElement(driver, ObjectRepository.frameWithInFrame).click();
 		WebElement ele = lib.findElement(driver, ObjectRepository.multipleFrames);
 		driver.switchTo().frame(ele);
 		WebElement ele1 = lib.findElement(driver, ObjectRepository.singleframInmultipleFrames);
@@ -207,10 +207,10 @@ public class TestCases3 extends lib {
 		driver.switchTo().defaultContent();
 	}
 
-	@Test(priority = 5)
+	@Test(priority = 6)
 	public void handlingWindows() {
-		Extenttest = ExtentReport.createTest(testcaseName());
-		lib.navigateToUrl("FramesURL", driver);
+		Extenttest = ExtentReport.createTest(new Object() {}.getClass().getEnclosingMethod().getName());
+		lib.navigateToUrl("WindowsURL", driver);
 		lib.waitForPageToLoad(driver);
 		String mainWindow = driver.getWindowHandle();
 		Set<String> MultipleWindows = driver.getWindowHandles();
@@ -218,10 +218,10 @@ public class TestCases3 extends lib {
 			driver.switchTo().window(getsingleWindow);
 			String Title = driver.getTitle();
 			System.out.println(Title);
-			if (Title.equals("Sierra Cedar")) {
+			if (Title.equals("JP Morgan")) {
 				driver.manage().window().maximize();
 				driver.close();
-			} else if (Title.equals("Sykes")) {
+			} else if (Title.equals("Cognizant")) {
 				driver.manage().window().maximize();
 				driver.close();
 			} else if (Title.equals("Fujitsu")) {
@@ -229,12 +229,13 @@ public class TestCases3 extends lib {
 				driver.close();
 			}
 		}
+		driver.switchTo().window(mainWindow);
 
 	}
 
-	@Test(priority = 6)
+	@Test(priority = 5)
 	public String handlingWebtable() {
-		Extenttest = ExtentReport.createTest(testcaseName());
+		Extenttest = ExtentReport.createTest(new Object() {}.getClass().getEnclosingMethod().getName());
 		String Salary = null;
 		lib.navigateToUrl("WebTableURL", driver);
 		lib.waitForPageToLoad(driver);
@@ -265,7 +266,7 @@ public class TestCases3 extends lib {
 
 	@Test(priority = 7)
 	public void mouseOperations() {
-		Extenttest = ExtentReport.createTest(testcaseName());
+		Extenttest = ExtentReport.createTest(new Object() {}.getClass().getEnclosingMethod().getName());
 		// right click operation
 		lib.navigateToUrl("mouseOpeartionRightClick", driver);
 		lib.waitForPageToLoad(driver);
@@ -275,7 +276,7 @@ public class TestCases3 extends lib {
 		action.contextClick(ele).build().perform();// right click operation
 		// driver.findElement(By.xpath("//span[contains(text(),'right click
 		// me')]")).click();
-		lib.findElement(driver,ObjectRepository.copy).click();
+		lib.findElement(driver, ObjectRepository.copy).click();
 		Alert alert = driver.switchTo().alert();
 		// String AlertText=alert.getText();
 		System.out.println("AlertText:" + alert.getText());
@@ -337,7 +338,7 @@ public class TestCases3 extends lib {
 
 	@Test(priority = 10)
 	public void FileUpload() throws AWTException, InterruptedException {
-		Extenttest = ExtentReport.createTest(testcaseName());
+		Extenttest = ExtentReport.createTest(new Object() {}.getClass().getEnclosingMethod().getName());
 		lib.navigateToUrl("FileUpload", driver);
 		lib.waitForPageToLoad(driver);
 
@@ -381,7 +382,7 @@ public class TestCases3 extends lib {
 
 	@Test(priority=9)
 	public void DataDrivenAutomationDemoSite() throws Exception{
-		Extenttest = ExtentReport.createTest(testcaseName());
+		Extenttest = ExtentReport.createTest(new Object() {}.getClass().getEnclosingMethod().getName());
 		lib.navigateToUrl("AutomationRegister", driver);
 		lib.waitForPageToLoad(driver);
 		try {
@@ -397,11 +398,23 @@ public class TestCases3 extends lib {
 				readTestData(rowNumber, objXSSFSheet);
 				if (hm.get("RunMode").equals("Yes")) {
 					
-					if (rowNumber>1){
+					/*if (rowNumber>1){
 						boolean closeiconLanguage = lib.findElement(driver, ObjectRepository.AutoamtionRegistercloseIcon).isDisplayed();
 						if(closeiconLanguage==true){
 							lib.findElement(driver, ObjectRepository.AutoamtionRegistercloseIcon).click();
 						}
+					}*/
+					
+					if (rowNumber>1){
+						String Identifier= ObjectRepository.AutoamtionRegistercloseIcon;
+						String locator = Identifier.split("&")[0].trim();
+						String description = Identifier.split("&")[1].trim();
+						 if (locator.equals("xpath")) {
+							 boolean closeiconLanguage=driver.findElement(By.xpath(description)).isDisplayed();
+						if(closeiconLanguage==true){
+							driver.findElement(By.xpath(description)).click();
+						}
+						 }
 					}
 					
 					//driver.findElement(By.xpath("(//input[@type='text'])[1]")).clear();
@@ -484,10 +497,10 @@ public class TestCases3 extends lib {
 			e.printStackTrace();
 		}
 	}
-	
-	@Test(priority=8)
-	public void brokenLinks(){
-		Extenttest = ExtentReport.createTest(testcaseName());
+
+	@Test(priority = 8)
+	public void brokenLinks() {
+		Extenttest = ExtentReport.createTest(new Object() {}.getClass().getEnclosingMethod().getName());
 		driver.get("https://demoqa.com/broken");
 		// driver.findElement(By.xpath("https://editor.datatables.net/examples/inline-editing/simple")).click();
 
@@ -501,13 +514,13 @@ public class TestCases3 extends lib {
 		for (int i = 0; i < links1.size(); i++) {
 			WebElement E1 = links1.get(i);
 			String url = E1.getAttribute("href");
-			System.out.println("url from browser : "+url);
+			System.out.println("url from browser : " + url);
 			verifyLinks(url);
 		}
 	}
-	
+
 	// helper methods
-	
+
 	private static void verifyLinks(String linkUrl) {
 		try {
 			URL url1 = new URL(linkUrl);
@@ -523,8 +536,8 @@ public class TestCases3 extends lib {
 			}
 
 			// Fetching and Printing the response code obtained
-			else if (responsecode >= 200 && responsecode<400) {
-				System.out.println(linkUrl + " - " + httpURLConnect.getResponseMessage()+" is a valid link");
+			else if (responsecode >= 200 && responsecode < 400) {
+				System.out.println(linkUrl + " - " + httpURLConnect.getResponseMessage() + " is a valid link");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -532,15 +545,14 @@ public class TestCases3 extends lib {
 	}
 
 	private void WriteTheResultToExcel(XSSFWorkbook objXSSFWorkbook, int rowNumber) {
-		XSSFSheet objSheet=objXSSFWorkbook.getSheet("TestData");
-		XSSFCellStyle CellStyle=objXSSFWorkbook.createCellStyle();
-		//CellStyle.setBorderBottom(XSSFCellStyle.BORDER_THIN);
-		System.out.println("Row Number in excel is :"+rowNumber);
-		
-		objSheet.getRow(rowNumber).createCell(18).setCellValue("PASS");	
+		XSSFSheet objSheet = objXSSFWorkbook.getSheet("TestData");
+		XSSFCellStyle CellStyle = objXSSFWorkbook.createCellStyle();
+		// CellStyle.setBorderBottom(XSSFCellStyle.BORDER_THIN);
+		System.out.println("Row Number in excel is :" + rowNumber);
+
+		objSheet.getRow(rowNumber).createCell(18).setCellValue("PASS");
 		objSheet.getRow(rowNumber).getCell(18).setCellStyle(CellStyle);
-		
-		
+
 	}
 
 	private void readTestData(int rowNumber, XSSFSheet objXSSFSheet) {
@@ -559,25 +571,25 @@ public class TestCases3 extends lib {
 		hm.put("Skills", objXSSFSheet.getRow(rowNumber).getCell(10).getStringCellValue());
 		hm.put("Country", objXSSFSheet.getRow(rowNumber).getCell(11).getStringCellValue());
 		hm.put("SelectCountry", objXSSFSheet.getRow(rowNumber).getCell(12).getStringCellValue());
-		
+
 		String DOB_YY = DataFormatterObj.formatCellValue(objXSSFSheet.getRow(rowNumber).getCell(13));
 		hm.put("DOB_YY", DOB_YY);
-	
+
 		hm.put("DOB_MM", objXSSFSheet.getRow(rowNumber).getCell(14).getStringCellValue());
-		
+
 		String DOB_DD = DataFormatterObj.formatCellValue(objXSSFSheet.getRow(rowNumber).getCell(15));
 		hm.put("DOB_DD", DOB_DD);
-		
+
 		hm.put("Password", objXSSFSheet.getRow(rowNumber).getCell(16).getStringCellValue());
 		hm.put("ConfirmPassword", objXSSFSheet.getRow(rowNumber).getCell(17).getStringCellValue());
 
 	}
 
-	//return test case name
+	/*// return test case name
 	private String testcaseName() {
-		String NameoftTestCase=new Object() {}.getClass().getEnclosingMethod().getName();
+		String NameoftTestCase = new Object() {}.getClass().getEnclosingMethod().getName();
 		return NameoftTestCase;
-	}
+	}*/
 
 	public String screenShot(WebDriver driver) {
 
@@ -615,21 +627,21 @@ public class TestCases3 extends lib {
 	public void beforeMethod() {
 		System.out.println("inside beforeMethod");
 	}
-	
+
 	@AfterMethod
 	public void afterMethod(ITestResult result) throws Exception {
 		System.out.println("inside afterMethod");
 		if (result.getStatus() == ITestResult.FAILURE) {
-			Extenttest.log(Status.FAIL, "Test Cases Failed is : " + result.getName());
-			Extenttest.log(Status.FAIL, "Test Cases Failed is : " + result.getThrowable());
+			Extenttest.log(Status.FAIL, "Test Case Failed is : " + result.getName());
+			Extenttest.log(Status.FAIL, "Test Case Failed is : " + result.getThrowable());
 			String SSpath = lib.takescreeshot(driver, result.getName());
 			Extenttest.addScreenCaptureFromPath(SSpath);
 		} else if (result.getStatus() == ITestResult.SUCCESS) {
-			Extenttest.log(Status.PASS, "Test Cases pass is : " + result.getName());
+			Extenttest.log(Status.PASS, "Test Case pass is : " + result.getName());
 		} else if (result.getStatus() == ITestResult.SKIP) {
-			Extenttest.log(Status.SKIP, "Test Cases Skipped is : " + result.getName());
+			Extenttest.log(Status.SKIP, "Test Case Skipped is : " + result.getName());
 		}
-	
+
 	}
 
 	@BeforeClass
@@ -654,7 +666,7 @@ public class TestCases3 extends lib {
 		System.out.println("inside afterTest");
 		ExtentReport.flush();
 	}
-	
+
 	@BeforeSuite
 	public void beforeSuite() throws IOException {
 		System.out.println("inside beforeSuite");

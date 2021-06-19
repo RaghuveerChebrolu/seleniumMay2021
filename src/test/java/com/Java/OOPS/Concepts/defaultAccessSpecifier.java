@@ -1,14 +1,14 @@
 package com.Java.OOPS.Concepts;
 
  
-import com.Java.Program.ClassAndObject.A; 
+/*import com.Java.Programs.A; 
  
 class defaultAccessSpecifier{  
 public static void main(String args[]){  
  A obj = new A();//Compile Time Error  
  obj.msg();//Compile Time Error  
 }  
-}
+}*/
 
 /*There are four types of Java access modifiers:
 

@@ -1,6 +1,6 @@
 package utility;
 
-import com.utility.constants;
+import utility.constants;
 
 public class ObjectRepository {
 

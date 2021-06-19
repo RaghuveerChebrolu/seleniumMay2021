@@ -1,6 +1,6 @@
 package com.Java.OOPS.Concepts;
 
-import com.Java.Program.ClassAndObject.B224455;
+import com.Java.Programs.B224455;
 
 /*using inhertence
 protected method which is located in another package is accessable*/

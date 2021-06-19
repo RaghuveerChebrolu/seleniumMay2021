@@ -7,7 +7,7 @@
 		<parameter name="UserName" value="demo"/>
 		<parameter name="Passcode" value="PASSWORD"/>
 		<classes>
-			<class name="testNg.TestngParamters" />
+			<class name="com.testNg.Concepts.TestngParamters" />
 		</classes>
 	</test>
 </suite> <!-- Suite -->

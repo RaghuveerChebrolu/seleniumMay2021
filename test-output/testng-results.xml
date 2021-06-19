@@ -1,33 +1,227 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="3" total="6" passed="3">
+<testng-results skipped="0" failed="0" ignored="0" total="10" passed="10">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="80" started-at="2021-06-18T04:35:11Z" finished-at="2021-06-18T04:35:11Z">
+  <suite name="Suite" duration-ms="123412" started-at="2021-06-19T10:50:32Z" finished-at="2021-06-19T10:52:36Z">
     <groups>
-      <group name="Regression">
-        <method signature="TestngGroups.testMethodFive()[pri:0, instance:com.testNg.Concepts.TestngGroups@527740a2]" name="testMethodFive" class="com.testNg.Concepts.TestngGroups"/>
-        <method signature="TestngGroups.testMethodThree()[pri:0, instance:com.testNg.Concepts.TestngGroups@527740a2]" name="testMethodThree" class="com.testNg.Concepts.TestngGroups"/>
-        <method signature="TestngGroups.testMethodTwo()[pri:0, instance:com.testNg.Concepts.TestngGroups@527740a2]" name="testMethodTwo" class="com.testNg.Concepts.TestngGroups"/>
-      </group> <!-- Regression -->
-      <group name="sanity">
-        <method signature="TestngGroups.testMethodTwo()[pri:0, instance:com.testNg.Concepts.TestngGroups@527740a2]" name="testMethodTwo" class="com.testNg.Concepts.TestngGroups"/>
-      </group> <!-- sanity -->
     </groups>
-    <test name="Test2" duration-ms="80" started-at="2021-06-18T04:35:11Z" finished-at="2021-06-18T04:35:11Z">
-      <class name="com.testNg.Concepts.TestngGroups">
-        <test-method status="PASS" signature="testMethodFive()[pri:0, instance:com.testNg.Concepts.TestngGroups@527740a2]" name="testMethodFive" duration-ms="17" started-at="2021-06-18T04:35:11Z" finished-at="2021-06-18T04:35:11Z">
+    <test name="MayJuneTestCases" duration-ms="123412" started-at="2021-06-19T10:50:32Z" finished-at="2021-06-19T10:52:36Z">
+      <class name="com.selenium.TestCases.TestCases3">
+        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="beforeSuite" is-config="true" duration-ms="16" started-at="2021-06-19T10:50:32Z" finished-at="2021-06-19T10:50:32Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testMethodFive -->
-        <test-method status="PASS" signature="testMethodThree()[pri:0, instance:com.testNg.Concepts.TestngGroups@527740a2]" name="testMethodThree" duration-ms="2" started-at="2021-06-18T04:35:11Z" finished-at="2021-06-18T04:35:11Z">
+        </test-method> <!-- beforeSuite -->
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="beforeTest" is-config="true" duration-ms="258" started-at="2021-06-19T10:50:32Z" finished-at="2021-06-19T10:50:33Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testMethodThree -->
-        <test-method status="PASS" signature="testMethodTwo()[pri:0, instance:com.testNg.Concepts.TestngGroups@527740a2]" name="testMethodTwo" duration-ms="2" started-at="2021-06-18T04:35:11Z" finished-at="2021-06-18T04:35:11Z">
+        </test-method> <!-- beforeTest -->
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="beforeClass" is-config="true" duration-ms="5945" started-at="2021-06-19T10:50:33Z" finished-at="2021-06-19T10:50:39Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testMethodTwo -->
-      </class> <!-- com.testNg.Concepts.TestngGroups -->
-    </test> <!-- Test2 -->
+        </test-method> <!-- beforeClass -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2021-06-19T10:50:39Z" finished-at="2021-06-19T10:50:39Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="verifyGmoOnlineLoadedSuccusessfully()[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="verifyGmoOnlineLoadedSuccusessfully" duration-ms="1856" started-at="2021-06-19T10:50:39Z" finished-at="2021-06-19T10:50:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyGmoOnlineLoadedSuccusessfully -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="afterMethod" is-config="true" duration-ms="10" started-at="2021-06-19T10:50:41Z" finished-at="2021-06-19T10:50:41Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verifyGmoOnlineLoadedSuccusessfully status=SUCCESS method=TestCases3.verifyGmoOnlineLoadedSuccusessfully()[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2021-06-19T10:50:41Z" finished-at="2021-06-19T10:50:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="verifyEnterGMOOnlineLoadedSuccessfully()[pri:1, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="verifyEnterGMOOnlineLoadedSuccessfully" duration-ms="746" started-at="2021-06-19T10:50:41Z" depends-on-methods="com.selenium.TestCases.TestCases3.verifyGmoOnlineLoadedSuccusessfully" finished-at="2021-06-19T10:50:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyEnterGMOOnlineLoadedSuccessfully -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="afterMethod" is-config="true" duration-ms="1" started-at="2021-06-19T10:50:41Z" finished-at="2021-06-19T10:50:41Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verifyEnterGMOOnlineLoadedSuccessfully status=SUCCESS method=TestCases3.verifyEnterGMOOnlineLoadedSuccessfully()[pri:1, instance:com.selenium.TestCases.TestCases3@6e6c3152] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2021-06-19T10:50:41Z" finished-at="2021-06-19T10:50:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="verifyExternalFrameBackpackOrder()[pri:2, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="verifyExternalFrameBackpackOrder" duration-ms="1974" started-at="2021-06-19T10:50:41Z" depends-on-methods="com.selenium.TestCases.TestCases3.verifyEnterGMOOnlineLoadedSuccessfully" finished-at="2021-06-19T10:50:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyExternalFrameBackpackOrder -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="afterMethod" is-config="true" duration-ms="1" started-at="2021-06-19T10:50:43Z" finished-at="2021-06-19T10:50:43Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verifyExternalFrameBackpackOrder status=SUCCESS method=TestCases3.verifyExternalFrameBackpackOrder()[pri:2, instance:com.selenium.TestCases.TestCases3@6e6c3152] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2021-06-19T10:50:43Z" finished-at="2021-06-19T10:50:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="HandlingAlerts()[pri:3, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="HandlingAlerts" duration-ms="13196" started-at="2021-06-19T10:50:43Z" finished-at="2021-06-19T10:50:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- HandlingAlerts -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="afterMethod" is-config="true" duration-ms="1" started-at="2021-06-19T10:50:57Z" finished-at="2021-06-19T10:50:57Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=HandlingAlerts status=SUCCESS method=TestCases3.HandlingAlerts()[pri:3, instance:com.selenium.TestCases.TestCases3@6e6c3152] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2021-06-19T10:50:57Z" finished-at="2021-06-19T10:50:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="HandlingFrames()[pri:4, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="HandlingFrames" duration-ms="21789" started-at="2021-06-19T10:50:57Z" finished-at="2021-06-19T10:51:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- HandlingFrames -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="afterMethod" is-config="true" duration-ms="1" started-at="2021-06-19T10:51:18Z" finished-at="2021-06-19T10:51:18Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=HandlingFrames status=SUCCESS method=TestCases3.HandlingFrames()[pri:4, instance:com.selenium.TestCases.TestCases3@6e6c3152] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="handlingWindows()[pri:6, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="handlingWindows" duration-ms="11696" started-at="2021-06-19T10:51:18Z" finished-at="2021-06-19T10:51:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- handlingWindows -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2021-06-19T10:51:18Z" finished-at="2021-06-19T10:51:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="afterMethod" is-config="true" duration-ms="2" started-at="2021-06-19T10:51:30Z" finished-at="2021-06-19T10:51:30Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=handlingWindows status=SUCCESS method=TestCases3.handlingWindows()[pri:6, instance:com.selenium.TestCases.TestCases3@6e6c3152] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2021-06-19T10:51:30Z" finished-at="2021-06-19T10:51:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="mouseOperations()[pri:7, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="mouseOperations" duration-ms="9608" started-at="2021-06-19T10:51:30Z" finished-at="2021-06-19T10:51:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- mouseOperations -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="afterMethod" is-config="true" duration-ms="2" started-at="2021-06-19T10:51:40Z" finished-at="2021-06-19T10:51:40Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=mouseOperations status=SUCCESS method=TestCases3.mouseOperations()[pri:7, instance:com.selenium.TestCases.TestCases3@6e6c3152] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="brokenLinks()[pri:8, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="brokenLinks" duration-ms="5086" started-at="2021-06-19T10:51:40Z" finished-at="2021-06-19T10:51:45Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- brokenLinks -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2021-06-19T10:51:40Z" finished-at="2021-06-19T10:51:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="afterMethod" is-config="true" duration-ms="0" started-at="2021-06-19T10:51:45Z" finished-at="2021-06-19T10:51:45Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=brokenLinks status=SUCCESS method=TestCases3.brokenLinks()[pri:8, instance:com.selenium.TestCases.TestCases3@6e6c3152] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2021-06-19T10:51:45Z" finished-at="2021-06-19T10:51:45Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="DataDrivenAutomationDemoSite()[pri:9, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="DataDrivenAutomationDemoSite" duration-ms="35945" started-at="2021-06-19T10:51:45Z" finished-at="2021-06-19T10:52:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- DataDrivenAutomationDemoSite -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="afterMethod" is-config="true" duration-ms="69" started-at="2021-06-19T10:52:21Z" finished-at="2021-06-19T10:52:21Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=DataDrivenAutomationDemoSite status=SUCCESS method=TestCases3.DataDrivenAutomationDemoSite()[pri:9, instance:com.selenium.TestCases.TestCases3@6e6c3152] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2021-06-19T10:52:21Z" finished-at="2021-06-19T10:52:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="FileUpload()[pri:10, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="FileUpload" duration-ms="14509" started-at="2021-06-19T10:52:21Z" finished-at="2021-06-19T10:52:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FileUpload -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="afterMethod" is-config="true" duration-ms="1" started-at="2021-06-19T10:52:35Z" finished-at="2021-06-19T10:52:35Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=FileUpload status=SUCCESS method=TestCases3.FileUpload()[pri:10, instance:com.selenium.TestCases.TestCases3@6e6c3152] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="afterTest" is-config="true" duration-ms="517" started-at="2021-06-19T10:52:35Z" finished-at="2021-06-19T10:52:36Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="afterClass" is-config="true" duration-ms="0" started-at="2021-06-19T10:52:35Z" finished-at="2021-06-19T10:52:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClass -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:com.selenium.TestCases.TestCases3@6e6c3152]" name="afterSuite" is-config="true" duration-ms="1247" started-at="2021-06-19T10:52:36Z" finished-at="2021-06-19T10:52:37Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+      </class> <!-- com.selenium.TestCases.TestCases3 -->
+    </test> <!-- MayJuneTestCases -->
   </suite> <!-- Suite -->
 </testng-results>

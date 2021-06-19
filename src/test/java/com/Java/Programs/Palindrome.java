@@ -2,7 +2,7 @@ package com.Java.Programs;
 
 import java.util.Scanner;
 
-public class palindrome {
+public class Palindrome {
 
 	public static void main(String[] args) {
 		//madam

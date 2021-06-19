@@ -46,7 +46,7 @@ class PNB211 implements Bank1233 {
 	}
 }
 
-public class interfaceRateOfInterest {
+public class interfacerateOfInterest {
 	public static void main(String[] args) {
 		Bank1233 b = new SBI112765();
 		System.out.println("ROI: " + b.rateOfInterest());

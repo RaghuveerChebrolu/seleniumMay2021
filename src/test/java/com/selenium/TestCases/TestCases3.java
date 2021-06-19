@@ -207,7 +207,7 @@ public class TestCases3 extends lib {
 		driver.switchTo().defaultContent();
 	}
 
-	@Test(priority = 6)
+	@Test(priority = 10)
 	public void handlingWindows() {
 		Extenttest = ExtentReport.createTest(new Object() {}.getClass().getEnclosingMethod().getName());
 		lib.navigateToUrl("WindowsURL", driver);
@@ -220,12 +220,15 @@ public class TestCases3 extends lib {
 			System.out.println(Title);
 			if (Title.equals("JP Morgan")) {
 				driver.manage().window().maximize();
+				lib.waitForPageToLoad(driver);
 				driver.close();
 			} else if (Title.equals("Cognizant")) {
 				driver.manage().window().maximize();
+				lib.waitForPageToLoad(driver);
 				driver.close();
 			} else if (Title.equals("Fujitsu")) {
 				driver.manage().window().maximize();
+				lib.waitForPageToLoad(driver);
 				driver.close();
 			}
 		}
@@ -336,7 +339,7 @@ public class TestCases3 extends lib {
 
 	}
 
-	@Test(priority = 10)
+	@Test(priority = 6)
 	public void FileUpload() throws AWTException, InterruptedException {
 		Extenttest = ExtentReport.createTest(new Object() {}.getClass().getEnclosingMethod().getName());
 		lib.navigateToUrl("FileUpload", driver);

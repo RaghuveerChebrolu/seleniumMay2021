@@ -25,6 +25,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -381,5 +382,59 @@ public class lib {
 
 	}
 	
+	public static void javascriptExecutorScroolDown(String str) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript(str);
+	}
+
+	public static void javascriptExecutorScroolDown(WebDriver driver,int i, int j) {
+		//Object x = (Integer) j;
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(" + Integer.toString(i) + "," + Integer.toString(j) + ")");
+		 
+	}
+
+	public static void javascriptExecutorScroolUP(WebDriver driver,String str) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript(str);
+	}
+
+	public static void javascriptExecutorScroolUP(WebDriver driver,int x, int y) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(" + Integer.toString(x) + "," + Integer.toString(y) + ")", "");
+	}
+
+	public static void javascriptExecutorScroolLeft(WebDriver driver,int x, int y) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(" + Integer.toString(x) + "," + Integer.toString(y) + ")", "");
+	}
+
+	public static void javascriptExecutorScroolRight(WebDriver driver,int x, int y) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(" + Integer.toString(x) + "," + Integer.toString(y) + ")", "");
+	}
+
+	public static void javascriptExecutorScroolIntoView(WebElement element) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView()", element);
+	}
+
+	public static void javascriptExecutorScroolIntoView(WebElement element, Actions obj) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView()", element);
+		obj.doubleClick(element).build().perform();
+	}
+
+	public static void switchToFrameWithIndex(int index) {
+		driver.switchTo().frame(index);
+	}
+
+	public static void switchToFrameWithString(String name) {
+		driver.switchTo().frame(name);
+	}
+
+	public static void switchToFrameWithWebElement(WebElement element) {
+		driver.switchTo().frame(element);
+	}
 
 }

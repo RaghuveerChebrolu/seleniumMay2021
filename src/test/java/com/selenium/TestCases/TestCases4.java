@@ -237,9 +237,9 @@ public class TestCases4 extends lib {
 		driver.switchTo().window(mainWindow);
 
 	}
-
+	
 	@Test(priority = 5)
-	public String handlingWebtable() {
+	public void handlingWebtable() {
 		Extenttest = ExtentReport.createTest(new Object() {}.getClass().getEnclosingMethod().getName());
 		String Salary = null;
 		lib.navigateToUrl("WebTableURL", driver);
@@ -260,12 +260,12 @@ public class TestCases4 extends lib {
 						.findElement(By
 								.xpath("//div[@class='dataTables_wrapper no-footer']/table/tbody/tr[" + i + "]/td[7]"))
 						.getText();
-				System.out.println(Salary);
+				System.out.println("Salary: "+Salary);
 				Assert.assertEquals(lastname, LastNameProvidedByUser);
 			}
 
 		}
-		return Salary;
+		//return Salary;
 
 	}
 
